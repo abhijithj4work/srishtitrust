@@ -35,7 +35,7 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
 export default function ImpactStats() {
   return (
     <section className="py-28 md:py-36 bg-forest text-cream grain-overlay">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
         <p className="text-[11px] tracking-[0.2em] uppercase text-cream/40 mb-16 md:mb-20 text-center">
           Impact at a Glance
         </p>

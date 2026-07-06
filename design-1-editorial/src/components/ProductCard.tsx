@@ -9,81 +9,56 @@ import CinematicButton from './ui/CinematicButton'
 interface Props {
   product: Product
   index?: number
-  layout?: 'horizontal' | 'vertical'
 }
 
-export default function ProductCard({ product, index = 0, layout = 'horizontal' }: Props) {
+export default function ProductCard({ product, index = 0 }: Props) {
   const { addItem } = useCart()
 
-  if (layout === 'vertical') {
-    return (
-      <motion.div
-        initial={{ opacity: 0, y: 40, rotateX: 8 }}
-        whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-        viewport={{ once: true, margin: '-40px' }}
-        transition={{ delay: index * 0.06, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        style={{ transformPerspective: 1200 }}
-      >
-        <TiltCard intensity={8}>
-          <article className="group">
-            <div className="aspect-[4/5] overflow-hidden bg-linen/40 mb-4 shadow-[0_12px_40px_rgba(0,0,0,0.08)]">
-              <img
-                src={assetUrl(product.image)}
-                alt={product.name}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-            </div>
-            <p className="text-[10px] uppercase tracking-[0.2em] text-stone mb-1.5 font-medium">{product.institute}</p>
-            <h3 className="text-sm font-semibold text-charcoal mb-1 tracking-tight">{product.name}</h3>
-            <p className="text-sm font-semibold text-forest mb-4">{formatPrice(product.price)}</p>
-            <CinematicButton variant="primary" size="sm" onClick={() => addItem(product)} fullWidth>
-              Add to cart
-            </CinematicButton>
-          </article>
-        </TiltCard>
-      </motion.div>
-    )
-  }
-
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 40, rotateX: 6 }}
+    <motion.div
+      initial={{ opacity: 0, y: 40, rotateX: 8 }}
       whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ delay: index * 0.08, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ delay: index * 0.06, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       style={{ transformPerspective: 1200 }}
-      className="group grid grid-cols-1 md:grid-cols-12 gap-10 items-center py-14 border-b border-linen/80 last:border-0"
     >
-      <div className="md:col-span-5">
-        <TiltCard intensity={6}>
-          <div className="relative aspect-[4/5] bg-linen/30 overflow-hidden shadow-[0_16px_48px_rgba(0,0,0,0.1)] group/img">
+      <TiltCard intensity={8}>
+        <article className="group relative">
+          <div className="relative aspect-[4/5] overflow-hidden bg-linen/40 mb-4 rounded-xl shadow-[0_12px_40px_rgba(0,0,0,0.08)]">
             <img
               src={assetUrl(product.image)}
               alt={product.name}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-105"
+              className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/50 via-transparent to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-500" />
-            <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover/img:translate-y-0 transition-transform duration-500 ease-out">
-              <CinematicButton variant="primary" size="sm" onClick={() => addItem(product)} fullWidth>
+            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out">
+              <CinematicButton
+                variant="accent"
+                onClick={() => addItem(product)}
+                className="w-full !py-2.5 !text-xs"
+              >
                 Quick Add
               </CinematicButton>
             </div>
           </div>
-        </TiltCard>
-      </div>
 
-      <div className="md:col-span-7 md:pl-8">
-        <p className="text-[11px] uppercase tracking-[0.2em] text-stone mb-4 font-medium">
-          {product.category} · {product.institute}
-        </p>
-        <h3 className="text-2xl md:text-3xl font-bold text-charcoal mb-4 tracking-tight leading-tight">
-          {product.name}
-        </h3>
-        <p className="text-charcoal/55 text-sm leading-relaxed mb-6 max-w-md">
-          {product.description}
-        </p>
-        <p className="text-xl font-bold text-forest">{formatPrice(product.price)}</p>
-      </div>
-    </motion.article>
+          <p className="text-[10px] text-stone uppercase tracking-[0.2em] mb-1.5 font-medium">{product.institute}</p>
+          <h3 className="text-sm font-semibold text-charcoal mb-1 tracking-tight leading-snug">{product.name}</h3>
+          <p className="text-sm font-semibold text-forest">{formatPrice(product.price)}</p>
+
+          {product.colors && (
+            <div className="flex gap-2 mt-3">
+              {product.colors.map(color => (
+                <span
+                  key={color}
+                  className="w-3.5 h-3.5 rounded-full border border-charcoal/10 bg-linen shadow-inner"
+                  title={color}
+                />
+              ))}
+            </div>
+          )}
+        </article>
+      </TiltCard>
+    </motion.div>
   )
 }

@@ -1,6 +1,6 @@
-import { useState } from 'react'
 import { products } from '@shared/products'
 import ProductCard from '../components/ProductCard'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Reveal from '../components/ui/Reveal'
 
@@ -14,14 +14,12 @@ export default function Shop() {
 
   return (
     <div className="pt-28 pb-28 md:pb-36">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-        <Reveal className="mb-14 md:mb-20 pb-10 border-b border-charcoal/8 max-w-xl">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+        <Reveal className="mb-14 md:mb-20 pb-10 border-b border-linen">
           <p className="text-[11px] uppercase tracking-[0.25em] text-stone mb-4 font-medium">Store</p>
-          <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-charcoal mb-4">
-            Handmade with purpose
-          </h1>
-          <p className="text-charcoal/55 text-sm md:text-base leading-relaxed">
-            Your purchases power education and livelihoods across Munnar&apos;s plantation communities.
+          <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-charcoal mb-4">Shop handmade</h1>
+          <p className="text-stone text-sm md:text-base max-w-lg leading-relaxed">
+            Every purchase supports education and sustainable livelihoods in Munnar.
           </p>
         </Reveal>
 
@@ -42,14 +40,14 @@ export default function Shop() {
           ))}
         </Reveal>
 
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="popLayout">
           <motion.div
             key={activeCategory}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
+            exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.4 }}
-            className="space-y-0"
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-12"
           >
             {filtered.map((p, i) => (
               <ProductCard key={p.id} product={p} index={i} />
