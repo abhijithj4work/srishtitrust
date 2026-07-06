@@ -3,9 +3,9 @@ set -e
 
 GH_USER="abhijithj4work"
 DESIGNS=(
-  "design-1-editorial:srishti-editorial-poc"
-  "design-2-artisan:srishti-artisan-poc"
-  "design-3-immersive:srishti-immersive-poc"
+  "design-1-artisan-warm:srishti-artisan-warm-poc"
+  "design-2-artisan-noir:srishti-artisan-noir-poc"
+  "design-3-artisan-botanic:srishti-artisan-botanic-poc"
 )
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 
@@ -22,19 +22,15 @@ for entry in "${DESIGNS[@]}"; do
   cd "$ROOT/$DIR"
   GH_PAGES=true npm run build
 
-  # SPA fallback for GitHub Pages — inject redirect into index.html
-  SEGMENT_COUNT=1
   REDIRECT_SCRIPT="<script>!function(){var s=sessionStorage.getItem('gh-spa-path');if(s){sessionStorage.removeItem('gh-spa-path');var b='${REPO}';history.replaceState(null,'','/'+b+'/'+s.replace(/^\\//,'')+location.hash)}}();</script>"
   SPA_404="<script>sessionStorage.setItem('gh-spa-path',location.pathname.split('/').slice(2).join('/')+location.search+location.hash);location.replace(location.pathname.split('/').slice(0,2).join('/')+'/');</script>"
 
-  # Inject redirect handler into built index.html
   if [[ "$OSTYPE" == "darwin"* ]]; then
     sed -i '' "s|</head>|${REDIRECT_SCRIPT}</head>|" dist/index.html
   else
     sed -i "s|</head>|${REDIRECT_SCRIPT}</head>|" dist/index.html
   fi
   cp dist/index.html dist/404.html
-  # Prepend 404 capture script to 404.html
   if [[ "$OSTYPE" == "darwin"* ]]; then
     sed -i '' "s|<body>|<body>${SPA_404}|" dist/404.html
   else
@@ -55,10 +51,9 @@ for entry in "${DESIGNS[@]}"; do
     git remote add origin "https://github.com/$GH_USER/$REPO.git"
     git push -f origin gh-pages
   else
-    gh repo create "$REPO" --public --description "Srishti Trust POC - ${DIR}" --source=. --remote=origin --push
+    gh repo create "$REPO" --public --description "Srishti Trust Artisan POC - ${DIR}" --source=. --remote=origin --push
   fi
 
-  # Enable GitHub Pages from gh-pages branch
   gh api -X POST "repos/$GH_USER/$REPO/pages" \
     -f build_type=legacy \
     -f source[branch]=gh-pages \
@@ -73,7 +68,7 @@ for entry in "${DESIGNS[@]}"; do
 done
 
 echo ""
-echo "All 3 designs deployed!"
-echo "  Editorial:  https://$GH_USER.github.io/srishti-editorial-poc/"
-echo "  Artisan:    https://$GH_USER.github.io/srishti-artisan-poc/"
-echo "  Immersive:  https://$GH_USER.github.io/srishti-immersive-poc/"
+echo "All 3 Artisan designs deployed!"
+echo "  Warm:    https://$GH_USER.github.io/srishti-artisan-warm-poc/"
+echo "  Noir:    https://$GH_USER.github.io/srishti-artisan-noir-poc/"
+echo "  Botanic: https://$GH_USER.github.io/srishti-artisan-botanic-poc/"
