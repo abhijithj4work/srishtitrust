@@ -31,7 +31,7 @@ export default function ImpactStats() {
         <p className="eyebrow text-sage/80 text-center mb-16 md:mb-20">
           Impact at a glance
         </p>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 md:gap-20">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {impactStats.map((stat, i) => (
             <motion.div
               key={stat.label}
@@ -39,7 +39,7 @@ export default function ImpactStats() {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.12, type: 'spring', stiffness: 80, damping: 18 }}
-              className="text-center lg:text-left border-l border-cream/10 pl-8 first:border-0 first:pl-0"
+              className="text-center lg:text-left bg-cream/10 rounded-2xl p-8"
             >
               <p className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight mb-3">
                 <Counter value={stat.value} suffix={stat.suffix} />

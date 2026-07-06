@@ -13,7 +13,7 @@ export default function Shop() {
     : products.filter(p => p.category === activeCategory)
 
   return (
-    <div className="page-top page-bottom">
+    <div className="page-shell page-end">
       <div className="max-w-7xl mx-auto container-pad">
         <Reveal className="mb-20 pb-12 border-b border-charcoal/8">
           <p className="eyebrow text-stone mb-6">Store</p>
@@ -29,10 +29,10 @@ export default function Shop() {
               key={cat}
               onClick={() => setActiveCategory(cat)}
               whileTap={{ scale: 0.95 }}
-              className={`px-6 py-3 text-sm font-semibold rounded-full tracking-wide transition-all duration-300 ${
+              className={`px-6 py-3 text-sm font-semibold rounded-xl tracking-wide transition-all duration-300 ${
                 activeCategory === cat
-                  ? 'bg-charcoal text-cream shadow-[0_3px_0_#0a0a0a,0_6px_20px_rgba(0,0,0,0.15)]'
-                  : 'text-charcoal/45 hover:text-charcoal border border-charcoal/10 hover:border-charcoal/25 hover:bg-white'
+                  ? 'bg-forest text-cream'
+                  : 'text-charcoal/45 hover:text-forest border border-charcoal/10 hover:border-sage/40 hover:bg-white'
               }`}
             >
               {cat}
@@ -47,7 +47,7 @@ export default function Shop() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.5 }}
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-16"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-20"
           >
             {filtered.map((p, i) => (
               <ProductCard key={p.id} product={p} index={i} />

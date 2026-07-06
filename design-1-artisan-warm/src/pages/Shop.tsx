@@ -13,9 +13,9 @@ export default function Shop() {
     : products.filter(p => p.category === activeCategory)
 
   return (
-    <div className="page-top page-bottom">
+    <div className="page-shell page-end">
       <div className="max-w-7xl mx-auto container-pad">
-        <Reveal className="mb-20 pb-12 border-b border-charcoal/8">
+        <Reveal className="mb-20 border-b border-charcoal/8 pb-12">
           <p className="eyebrow text-warm-gray mb-6">Store</p>
           <h1 className="display-section font-bold text-charcoal mb-6">Shop handmade</h1>
           <p className="body-lg text-warm-gray max-w-lg">
@@ -23,16 +23,16 @@ export default function Shop() {
           </p>
         </Reveal>
 
-        <Reveal delay={0.12} className="flex flex-wrap gap-3 mb-16 md:mb-20">
+        <Reveal delay={0.12} className="flex flex-wrap gap-4 mb-16 md:mb-20">
           {categories.map(cat => (
             <motion.button
               key={cat}
               onClick={() => setActiveCategory(cat)}
               whileTap={{ scale: 0.95 }}
-              className={`px-6 py-3 text-sm font-semibold rounded-full tracking-wide transition-all duration-300 ${
+              className={`px-7 py-3.5 text-sm font-semibold rounded-full tracking-wide transition-all duration-300 ${
                 activeCategory === cat
-                  ? 'bg-charcoal text-cream shadow-[0_3px_0_#0a0a0a,0_6px_20px_rgba(0,0,0,0.15)]'
-                  : 'text-charcoal/45 hover:text-charcoal border border-charcoal/10 hover:border-charcoal/25 hover:bg-white'
+                  ? 'bg-terracotta text-white shadow-[0_3px_0_#8a3a28,0_6px_20px_rgba(184,92,56,0.25)]'
+                  : 'text-charcoal/45 hover:text-charcoal border border-charcoal/10 hover:border-terracotta/40 hover:bg-white'
               }`}
             >
               {cat}
@@ -47,7 +47,7 @@ export default function Shop() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.5 }}
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-16"
+            className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-20"
           >
             {filtered.map((p, i) => (
               <ProductCard key={p.id} product={p} index={i} />

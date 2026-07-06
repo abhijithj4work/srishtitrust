@@ -19,16 +19,16 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-night/90 backdrop-blur-2xl border-b border-gold/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]'
-          : 'bg-black/10 backdrop-blur-xl border-b border-transparent'
+          ? 'bg-night/92 backdrop-blur-2xl border-b border-gold/15 shadow-[0_8px_40px_rgba(0,0,0,0.55)]'
+          : 'bg-night/20 backdrop-blur-xl border-b border-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto container-pad h-20 flex items-center justify-between">
-        <Link to="/" className="text-base md:text-lg font-bold tracking-[0.12em] uppercase text-mist">
+      <div className="relative max-w-7xl mx-auto container-pad h-24 flex items-center justify-between">
+        <Link to="/" className="text-base md:text-lg font-bold tracking-[0.12em] uppercase text-mist z-10">
           Srishti
         </Link>
 
-        <div className="hidden md:flex items-center gap-10">
+        <div className="hidden md:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
           {navLinks.map(link => (
             <Link key={link.path} to={link.path} className="relative text-sm font-medium transition-colors group">
               <span className={location.pathname === link.path ? 'text-mist' : 'text-mist/45 group-hover:text-mist'}>
@@ -41,7 +41,7 @@ export default function Navbar() {
           ))}
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 z-10">
           <motion.button whileTap={{ scale: 0.9 }} onClick={() => setIsOpen(true)} className="relative p-3 text-mist/50 hover:text-mist transition-colors" aria-label="Open cart">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />

@@ -13,7 +13,7 @@ export default function Shop() {
     : products.filter(p => p.category === activeCategory)
 
   return (
-    <div className="page-top page-bottom">
+    <div className="page-shell page-end">
       <div className="max-w-7xl mx-auto container-pad">
         <Reveal className="mb-20 pb-12 border-b border-gold/10">
           <p className="eyebrow text-gold/70 mb-6">Store</p>
@@ -47,10 +47,10 @@ export default function Shop() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.5 }}
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-16"
+            className="flex flex-col gap-16"
           >
             {filtered.map((p, i) => (
-              <ProductCard key={p.id} product={p} index={i} />
+              <ProductCard key={p.id} product={p} index={i} variant="row" />
             ))}
           </motion.div>
         </AnimatePresence>

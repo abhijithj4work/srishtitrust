@@ -16,21 +16,20 @@ export default function ProductCard({ product, index = 0 }: Props) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 48, rotateX: 12 }}
-      whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+      initial={{ opacity: 0, y: 32 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
-      transition={{ delay: index * 0.12, duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
-      style={{ transformPerspective: 1200 }}
+      transition={{ delay: index * 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
     >
       <TiltCard intensity={10}>
         <article className="group relative">
-          <div className="relative aspect-[4/5] overflow-hidden bg-sand/30 mb-5 rounded-2xl shadow-[0_12px_40px_rgba(0,0,0,0.08)]">
+          <div className="relative aspect-[4/5] overflow-hidden bg-sand/40 mb-6 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.06)]">
             <img
               src={assetUrl(product.image)}
               alt={product.name}
-              className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+              className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out">
               <CinematicButton variant="accent" size="sm" onClick={() => addItem(product)} fullWidth>
                 Quick Add

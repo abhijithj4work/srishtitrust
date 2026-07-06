@@ -17,10 +17,10 @@ export default function Navbar() {
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 h-20 transition-all duration-500 ${
         scrolled
-          ? 'bg-cream/90 backdrop-blur-2xl border-b border-charcoal/8 shadow-[0_8px_32px_rgba(0,0,0,0.06)]'
-          : 'bg-cream/5 backdrop-blur-xl border-b border-transparent'
+          ? 'bg-cream/85 backdrop-blur-2xl border-b border-charcoal/8 shadow-[0_8px_32px_rgba(0,0,0,0.06)]'
+          : 'bg-cream/25 backdrop-blur-xl border-b border-cream/20'
       }`}
     >
       <div className="max-w-7xl mx-auto container-pad h-20 flex items-center justify-between">
@@ -35,7 +35,7 @@ export default function Navbar() {
                 {link.label}
               </span>
               {location.pathname === link.path && (
-                <motion.span layoutId="nav-underline" className="absolute -bottom-1.5 left-0 right-0 h-px bg-terracotta" />
+                <motion.span layoutId="nav-underline" className="absolute -bottom-1.5 left-0 right-0 h-0.5 bg-terracotta rounded-full" />
               )}
             </Link>
           ))}

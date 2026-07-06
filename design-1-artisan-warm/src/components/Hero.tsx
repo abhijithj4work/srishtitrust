@@ -25,7 +25,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-charcoal/85 via-charcoal/55 to-charcoal/25 cinematic-vignette" />
       </motion.div>
 
-      <motion.div style={{ opacity: contentOpacity }} className="relative z-10 max-w-7xl mx-auto container-pad w-full page-top pb-8 flex flex-col">
+      <motion.div style={{ opacity: contentOpacity }} className="relative z-10 max-w-7xl mx-auto container-pad w-full hero-offset pb-8 flex flex-col">
         <motion.div
           initial={{ opacity: 0, y: 48, rotateX: 12, filter: 'blur(8px)' }}
           animate={{ opacity: 1, y: 0, rotateX: 0, filter: 'blur(0px)' }}

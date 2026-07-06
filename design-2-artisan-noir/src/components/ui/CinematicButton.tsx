@@ -7,11 +7,11 @@ type Size = 'sm' | 'md' | 'lg'
 
 const variants: Record<Variant, string> = {
   primary:
-    'bg-gold text-night shadow-[0_4px_0_#8a7030,0_10px_30px_rgba(201,168,76,0.35)] hover:shadow-[0_2px_0_#8a7030,0_6px_20px_rgba(201,168,76,0.25)] hover:translate-y-[2px] active:translate-y-[3px]',
+    'bg-gold text-night shadow-[0_4px_0_#8a7030,0_0_40px_rgba(201,168,76,0.45),0_10px_30px_rgba(201,168,76,0.35)] hover:shadow-[0_2px_0_#8a7030,0_0_56px_rgba(201,168,76,0.55),0_6px_20px_rgba(201,168,76,0.3)] hover:translate-y-[2px] active:translate-y-[3px]',
   secondary:
     'bg-mist/10 backdrop-blur-md text-mist border border-mist/25 shadow-[0_4px_24px_rgba(0,0,0,0.3)] hover:bg-mist/15 hover:border-gold/40',
   accent:
-    'bg-gold text-night shadow-[0_4px_0_#8a7030,0_10px_30px_rgba(201,168,76,0.4)] hover:shadow-[0_2px_0_#8a7030,0_6px_20px_rgba(201,168,76,0.3)] hover:translate-y-[2px] active:translate-y-[3px]',
+    'bg-gold text-night shadow-[0_4px_0_#8a7030,0_0_40px_rgba(201,168,76,0.5),0_10px_30px_rgba(201,168,76,0.4)] hover:shadow-[0_2px_0_#8a7030,0_0_56px_rgba(201,168,76,0.6),0_6px_20px_rgba(201,168,76,0.3)] hover:translate-y-[2px] active:translate-y-[3px]',
   outline:
     'bg-transparent text-mist border-2 border-gold/30 hover:border-gold hover:text-gold shadow-[0_4px_0_rgba(201,168,76,0.08)] hover:shadow-[0_2px_0_rgba(201,168,76,0.12)] hover:translate-y-[1px]',
   ghost:

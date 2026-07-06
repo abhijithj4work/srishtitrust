@@ -155,8 +155,8 @@ export default function BentoGrid() {
             <SectionHeader label="Store" title="Shop handmade" description="Your purchases power education and livelihoods." />
             <CinematicButton to="/shop" variant="outline" size="sm">View all products →</CinematicButton>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-8">
-            {products.slice(0, 4).map((p, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            {products.slice(0, 3).map((p, i) => (
               <ProductCard key={p.id} product={p} index={i} />
             ))}
           </div>
@@ -184,7 +184,7 @@ export default function BentoGrid() {
         </div>
       </section>
 
-      <section className="section-pad bg-sand/30 border-t border-charcoal/6">
+      <section className="section-pad bg-sand border-t border-charcoal/6">
         <div className="max-w-3xl mx-auto container-pad text-center">
           <Reveal>
             <p className="eyebrow text-warm-gray mb-6">Support us</p>

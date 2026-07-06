@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 export default function Institutes() {
   return (
-    <div className="page-top page-bottom">
+    <div className="page-shell page-end">
       <div className="max-w-7xl mx-auto container-pad">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -17,7 +17,7 @@ export default function Institutes() {
           <p className="text-gold font-medium mt-8 body-lg italic">{institutesIntro.highlight}</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
+        <div className="flex flex-col gap-12">
           {institutes.map((inst, i) => (
             <InstituteCard key={inst.slug} institute={inst} index={i} />
           ))}

@@ -2,7 +2,6 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import type { Institute } from '@shared/content'
 import { assetUrl } from '@shared/assetUrl'
-import TiltCard from './ui/TiltCard'
 
 interface Props {
   institute: Institute
@@ -10,34 +9,37 @@ interface Props {
 }
 
 export default function InstituteCard({ institute, index = 0 }: Props) {
+  const isReversed = index % 2 === 1
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.08 }}
     >
-      <TiltCard intensity={8}>
-        <Link
-          to={`/institutes/${institute.slug}`}
-          className="group block relative overflow-hidden rounded-2xl shadow-[0_16px_48px_rgba(0,0,0,0.4)] hover:shadow-[0_24px_60px_rgba(0,0,0,0.55)] transition-shadow duration-500 border border-gold/10"
-        >
-          <div className="aspect-[4/5] overflow-hidden">
-            <img
-              src={assetUrl(institute.image)}
-              alt={institute.name}
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-night/95 via-night/40 to-transparent" />
-          </div>
-          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-mist">
-            <h3 className="font-display text-xl md:text-2xl mb-2 group-hover:text-gold transition-colors">
-              {institute.name}
-            </h3>
-            <p className="text-mist/70 text-sm leading-relaxed line-clamp-2">{institute.tagline}</p>
-          </div>
-        </Link>
-      </TiltCard>
+      <Link
+        to={`/institutes/${institute.slug}`}
+        className={`group flex flex-col ${isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-stretch gap-0 border border-gold/15 hover:border-gold/35 transition-colors duration-500 overflow-hidden`}
+      >
+        <div className="w-full lg:w-[60%] aspect-[16/10] lg:aspect-auto lg:min-h-[280px] overflow-hidden">
+          <img
+            src={assetUrl(institute.image)}
+            alt={institute.name}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+          />
+        </div>
+        <div className="w-full lg:w-[40%] flex flex-col justify-center p-8 lg:p-12 bg-night-light/40">
+          <h3 className="font-display text-2xl md:text-3xl mb-4 group-hover:text-gold transition-colors">
+            {institute.name}
+          </h3>
+          <p className="text-mist/55 text-sm md:text-base leading-relaxed mb-4">{institute.tagline}</p>
+          <p className="text-mist/35 text-sm leading-relaxed line-clamp-3">{institute.description}</p>
+          <span className="eyebrow text-gold/60 text-xs mt-6 group-hover:text-gold transition-colors">
+            Learn more →
+          </span>
+        </div>
+      </Link>
     </motion.div>
   )
 }

@@ -19,19 +19,21 @@ export default function Hero() {
   const contentOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0])
 
   return (
-    <section ref={ref} className="relative min-h-screen grid grid-rows-[1fr_auto] overflow-hidden">
+    <section ref={ref} className="relative min-h-screen flex flex-col overflow-hidden">
       <motion.div className="absolute inset-0" style={{ y: imageY, scale: imageScale }}>
         <img src={assetUrl('assets/hero.jpg')} alt="Munnar tea plantations" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-night/95 via-night/70 to-night/30 cinematic-vignette" />
+        <div className="absolute inset-0 bg-gradient-to-b from-night/80 via-night/60 to-night/90 cinematic-vignette" />
       </motion.div>
 
-      <motion.div style={{ opacity: contentOpacity }} className="relative z-10 max-w-7xl mx-auto container-pad w-full page-top pb-8 flex flex-col">
+      <motion.div
+        style={{ opacity: contentOpacity }}
+        className="relative z-10 flex-1 flex items-center justify-center hero-offset px-6"
+      >
         <motion.div
-          initial={{ opacity: 0, y: 48, rotateX: 12, filter: 'blur(8px)' }}
-          animate={{ opacity: 1, y: 0, rotateX: 0, filter: 'blur(0px)' }}
+          initial={{ opacity: 0, y: 48, filter: 'blur(8px)' }}
+          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          style={{ transformPerspective: 1200 }}
-          className="max-w-3xl"
+          className="max-w-4xl text-center"
         >
           <p className="eyebrow text-gold/70 mb-8">{heroContent.eyebrow}</p>
           <h1 className="display-hero text-mist font-bold mb-8">
@@ -39,22 +41,22 @@ export default function Hero() {
             <br />
             <span className="text-mist/55 font-medium">Lives with dignity.</span>
           </h1>
-          <p className="body-lg text-mist/55 mb-12 max-w-xl">{heroContent.subtitle}</p>
-          <div className="flex flex-wrap gap-6">
+          <p className="body-lg text-mist/55 mb-12 max-w-2xl mx-auto">{heroContent.subtitle}</p>
+          <div className="flex flex-wrap items-center justify-center gap-6">
             <CinematicButton to="/shop" variant="accent" size="lg">Shop collection</CinematicButton>
             <CinematicButton to="/journey" variant="secondary" size="lg">Our story</CinematicButton>
           </div>
         </motion.div>
       </motion.div>
 
-      <motion.div style={{ opacity: contentOpacity }} className="relative z-10 max-w-7xl mx-auto container-pad w-full pb-32">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-5xl pt-8">
+      <motion.div style={{ opacity: contentOpacity }} className="relative z-10 max-w-7xl mx-auto container-pad w-full pb-16">
+        <div className="grid grid-cols-3 gap-4 md:gap-6">
           {pillars.map((pillar, i) => (
             <Reveal key={pillar.title} delay={0.3 + i * 0.12}>
-              <div className="bg-night/50 backdrop-blur-xl border border-gold/20 p-8 md:p-10 rounded-2xl hover:border-gold/40 transition-colors duration-500">
+              <div className="bg-night/50 backdrop-blur-xl border border-gold/20 p-6 md:p-8 text-center hover:border-gold/40 transition-colors duration-500">
                 <span className="text-gold text-xs font-bold tracking-[0.2em]">0{i + 1}</span>
-                <h3 className="text-mist text-base font-semibold mt-4 tracking-tight">{pillar.title}</h3>
-                <p className="text-mist/50 text-sm mt-2 leading-relaxed">{pillar.subtitle}</p>
+                <h3 className="text-mist text-sm md:text-base font-semibold mt-3 tracking-tight">{pillar.title}</h3>
+                <p className="text-mist/50 text-xs md:text-sm mt-1 leading-relaxed hidden sm:block">{pillar.subtitle}</p>
               </div>
             </Reveal>
           ))}
@@ -65,7 +67,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.8 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 z-10"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 z-10"
       >
         <span className="text-mist/35 text-xs uppercase tracking-[0.35em]">Scroll</span>
         <motion.div

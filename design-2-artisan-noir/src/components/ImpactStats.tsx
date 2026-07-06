@@ -27,11 +27,11 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
 export default function ImpactStats() {
   return (
     <section className="section-pad bg-night-light border-y border-gold/10 grain-overlay">
-      <div className="max-w-7xl mx-auto container-pad relative z-10">
+      <div className="max-w-4xl mx-auto container-pad relative z-10">
         <p className="eyebrow text-gold/70 text-center mb-16 md:mb-20">
           Impact at a glance
         </p>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 md:gap-20">
+        <div className="grid grid-cols-2 gap-12 md:gap-20">
           {impactStats.map((stat, i) => (
             <motion.div
               key={stat.label}
@@ -39,7 +39,7 @@ export default function ImpactStats() {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.12, type: 'spring', stiffness: 80, damping: 18 }}
-              className="text-center lg:text-left border-l border-gold/15 pl-8 first:border-0 first:pl-0"
+              className="text-center"
             >
               <p className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight mb-3 gold-gradient">
                 <Counter value={stat.value} suffix={stat.suffix} />

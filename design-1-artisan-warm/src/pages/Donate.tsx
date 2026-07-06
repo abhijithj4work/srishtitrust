@@ -4,22 +4,22 @@ import CinematicButton from '../components/ui/CinematicButton'
 
 export default function Donate() {
   return (
-    <div className="page-top page-bottom">
-      <div className="max-w-4xl mx-auto container-pad text-center">
-        <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}>
+    <div className="page-shell page-end">
+      <div className="max-w-2xl mx-auto container-pad space-y-16">
+        <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} className="text-center">
           <p className="eyebrow text-warm-gray mb-6">Give Back</p>
           <h1 className="display-section font-semibold mb-8">{donateContent.title}</h1>
-          <p className="body-lg text-warm-gray mb-20 max-w-2xl mx-auto">{donateContent.subtitle}</p>
+          <p className="body-lg text-warm-gray">{donateContent.subtitle}</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-20">
+        <div className="flex flex-col gap-10">
           {donateContent.impact.map((item, i) => (
             <motion.button
               key={item.amount}
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.12 }}
-              className="bg-white rounded-3xl p-12 md:p-16 border border-sand/50 hover:border-terracotta hover:shadow-lg transition-all text-left group"
+              className="card-pad bg-white rounded-2xl border border-sand/50 hover:border-terracotta hover:shadow-lg transition-all text-left group"
             >
               <p className="text-3xl md:text-4xl font-semibold tracking-tight text-terracotta mb-4 group-hover:scale-105 transition-transform inline-block">
                 {item.amount}
@@ -33,7 +33,7 @@ export default function Donate() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
-          className="bg-olive text-cream rounded-3xl p-12 md:p-16"
+          className="bg-olive text-cream rounded-2xl card-pad text-center mb-0"
         >
           <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-6">Make a Custom Donation</h2>
           <p className="body-lg text-cream/70 mb-10 max-w-md mx-auto">Every contribution helps us reach more children and create sustainable livelihoods.</p>

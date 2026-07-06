@@ -22,16 +22,14 @@ export default function Hero() {
     <section ref={ref} className="relative min-h-screen grid grid-rows-[1fr_auto] overflow-hidden">
       <motion.div className="absolute inset-0" style={{ y: imageY, scale: imageScale }}>
         <img src={assetUrl('assets/plantation.jpg')} alt="Tea plantations in Munnar" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-charcoal/85 via-forest/55 to-charcoal/25 cinematic-vignette" />
+        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/80 via-forest/50 to-charcoal/70 cinematic-vignette" />
       </motion.div>
 
-      <motion.div style={{ opacity: contentOpacity }} className="relative z-10 max-w-7xl mx-auto container-pad w-full page-top pb-8 flex flex-col">
+      <motion.div style={{ opacity: contentOpacity }} className="relative z-10 max-w-4xl mx-auto container-pad w-full hero-offset pb-8 flex flex-col items-center text-center">
         <motion.div
-          initial={{ opacity: 0, y: 48, rotateX: 12, filter: 'blur(8px)' }}
-          animate={{ opacity: 1, y: 0, rotateX: 0, filter: 'blur(0px)' }}
+          initial={{ opacity: 0, y: 48, filter: 'blur(8px)' }}
+          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          style={{ transformPerspective: 1200 }}
-          className="max-w-3xl"
         >
           <p className="eyebrow text-sage/80 mb-8">{heroContent.eyebrow}</p>
           <h1 className="display-hero text-cream font-bold mb-8">
@@ -39,16 +37,16 @@ export default function Hero() {
             <br />
             <span className="text-cream/60 font-medium">Lives with dignity.</span>
           </h1>
-          <p className="body-lg text-cream/55 mb-12 max-w-xl">{heroContent.subtitle}</p>
-          <div className="flex flex-wrap gap-6">
+          <p className="body-lg text-cream/55 mb-12 max-w-xl mx-auto">{heroContent.subtitle}</p>
+          <div className="flex flex-wrap gap-6 justify-center">
             <CinematicButton to="/shop" variant="accent" size="lg">Shop collection</CinematicButton>
             <CinematicButton to="/journey" variant="secondary" size="lg">Our story</CinematicButton>
           </div>
         </motion.div>
       </motion.div>
 
-      <motion.div style={{ opacity: contentOpacity }} className="relative z-10 max-w-7xl mx-auto container-pad w-full pb-32">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-5xl pt-8">
+      <motion.div style={{ opacity: contentOpacity }} className="relative z-10 max-w-5xl mx-auto container-pad w-full pb-32">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8">
           {pillars.map((pillar, i) => (
             <Reveal key={pillar.title} delay={0.3 + i * 0.12}>
               <div className="bg-charcoal/30 backdrop-blur-xl border border-sage/30 p-8 md:p-10 rounded-2xl hover:border-sage/50 transition-colors duration-500">

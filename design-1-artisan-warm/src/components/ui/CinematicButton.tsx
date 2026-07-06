@@ -7,15 +7,15 @@ type Size = 'sm' | 'md' | 'lg'
 
 const variants: Record<Variant, string> = {
   primary:
-    'bg-charcoal text-cream shadow-[0_4px_0_#0a0a0a,0_10px_30px_rgba(0,0,0,0.2)] hover:shadow-[0_2px_0_#0a0a0a,0_6px_20px_rgba(0,0,0,0.15)] hover:translate-y-[2px] active:translate-y-[3px]',
+    'bg-terracotta text-white shadow-[0_4px_0_#8a3a28,0_10px_30px_rgba(184,92,56,0.35)] hover:shadow-[0_2px_0_#8a3a28,0_6px_20px_rgba(184,92,56,0.25)] hover:translate-y-[2px] active:translate-y-[3px]',
   secondary:
     'bg-cream/80 backdrop-blur-md text-charcoal border border-charcoal/10 shadow-[0_4px_24px_rgba(0,0,0,0.06)] hover:bg-cream hover:border-charcoal/20',
   accent:
-    'bg-terracotta text-white shadow-[0_4px_0_#8a3a28,0_10px_30px_rgba(196,90,60,0.35)] hover:shadow-[0_2px_0_#8a3a28,0_6px_20px_rgba(196,90,60,0.25)] hover:translate-y-[2px] active:translate-y-[3px]',
+    'bg-terracotta text-white shadow-[0_4px_0_#8a3a28,0_10px_30px_rgba(184,92,56,0.35)] hover:shadow-[0_2px_0_#8a3a28,0_6px_20px_rgba(184,92,56,0.25)] hover:translate-y-[2px] active:translate-y-[3px]',
   outline:
-    'bg-transparent text-charcoal border-2 border-charcoal/15 hover:border-charcoal hover:bg-charcoal/5 shadow-[0_4px_0_rgba(0,0,0,0.04)] hover:shadow-[0_2px_0_rgba(0,0,0,0.06)] hover:translate-y-[1px]',
+    'bg-transparent text-charcoal border-2 border-charcoal/15 hover:border-terracotta hover:bg-terracotta/5 shadow-[0_4px_0_rgba(0,0,0,0.04)] hover:shadow-[0_2px_0_rgba(0,0,0,0.06)] hover:translate-y-[1px]',
   ghost:
-    'bg-transparent text-charcoal/70 hover:text-charcoal hover:bg-charcoal/5',
+    'bg-transparent text-charcoal/70 hover:text-terracotta hover:bg-terracotta/5',
 }
 
 const sizes: Record<Size, string> = {

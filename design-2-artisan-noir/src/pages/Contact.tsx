@@ -12,58 +12,44 @@ export default function Contact() {
   }
 
   return (
-    <div className="page-top page-bottom">
-      <div className="max-w-7xl mx-auto container-pad grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-        <motion.div initial={{ opacity: 0, x: -24 }} animate={{ opacity: 1, x: 0 }}>
+    <div className="page-shell page-end">
+      <div className="max-w-xl mx-auto container-pad">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-12"
+        >
           <p className="eyebrow text-gold/70 mb-6">Get in Touch</p>
-          <h1 className="display-section font-semibold text-mist mb-8">Contact Us</h1>
-          <p className="body-lg text-mist/45 mb-12">
-            We&apos;d love to hear from you. Reach out to learn more about our mission, products, or how you can support Srishti Trust.
+          <h1 className="display-section font-semibold text-mist mb-6">Contact Us</h1>
+          <p className="body-lg text-mist/45">
+            We&apos;d love to hear from you about our mission, products, or how you can support Srishti Trust.
           </p>
-
-          <div className="space-y-10">
-            <div>
-              <h3 className="eyebrow text-gold/70 mb-4 text-xs">Address</h3>
-              <p className="body-lg text-mist">{siteInfo.contact.address}</p>
-            </div>
-            <div>
-              <h3 className="eyebrow text-gold/70 mb-4 text-xs">Phone</h3>
-              <a href={`tel:${siteInfo.contact.phone}`} className="body-lg text-mist hover:text-gold transition-colors">
-                {siteInfo.contact.phone}
-              </a>
-            </div>
-            <div>
-              <h3 className="eyebrow text-gold/70 mb-4 text-xs">Email</h3>
-              <a href={`mailto:${siteInfo.contact.email}`} className="body-lg text-mist hover:text-gold transition-colors">
-                {siteInfo.contact.email}
-              </a>
-            </div>
-          </div>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: 24 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="bg-night-light rounded-3xl p-12 md:p-16 shadow-sm border border-gold/15"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="bg-night-light/60 backdrop-blur-xl border border-gold/15 card-pad"
         >
           {submitted ? (
-            <div className="text-center py-16">
+            <div className="text-center py-12">
               <p className="text-2xl font-semibold tracking-tight text-gold mb-4">Thank you!</p>
               <p className="body-lg text-mist/45">We&apos;ll get back to you soon. (POC — no backend)</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-8">
+            <form onSubmit={handleSubmit} className="field-stack">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-mist mb-3">Name</label>
-                <input id="name" required className="w-full px-5 py-4 rounded-xl border border-gold/15 bg-night text-mist focus:outline-none focus:border-gold" />
+                <input id="name" required className="input-lg border border-gold/15 bg-night text-mist focus:outline-none focus:border-gold" />
               </div>
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-mist mb-3">Email</label>
-                <input id="email" type="email" required className="w-full px-5 py-4 rounded-xl border border-gold/15 bg-night text-mist focus:outline-none focus:border-gold" />
+                <input id="email" type="email" required className="input-lg border border-gold/15 bg-night text-mist focus:outline-none focus:border-gold" />
               </div>
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-mist mb-3">Message</label>
-                <textarea id="message" required rows={5} className="w-full px-5 py-4 rounded-xl border border-gold/15 bg-night text-mist focus:outline-none focus:border-gold resize-none" />
+                <textarea id="message" required rows={5} className="input-lg border border-gold/15 bg-night text-mist focus:outline-none focus:border-gold resize-none" />
               </div>
               <CinematicButton type="submit" variant="accent" size="md" fullWidth>
                 Send Message
@@ -71,6 +57,20 @@ export default function Contact() {
             </form>
           )}
         </motion.div>
+
+        <div className="mt-12 space-y-4 text-center text-sm text-mist/45">
+          <p>{siteInfo.contact.address}</p>
+          <p>
+            <a href={`tel:${siteInfo.contact.phone}`} className="hover:text-gold transition-colors">
+              {siteInfo.contact.phone}
+            </a>
+          </p>
+          <p>
+            <a href={`mailto:${siteInfo.contact.email}`} className="hover:text-gold transition-colors">
+              {siteInfo.contact.email}
+            </a>
+          </p>
+        </div>
       </div>
     </div>
   )

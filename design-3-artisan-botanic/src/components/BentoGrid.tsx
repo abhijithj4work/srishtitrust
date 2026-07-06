@@ -6,7 +6,6 @@ import {
 } from '@shared/content'
 import { assetUrl } from '@shared/assetUrl'
 import { products } from '@shared/products'
-import { useCart } from '../context/CartContext'
 import ProductCard from './ProductCard'
 import CinematicButton from './ui/CinematicButton'
 import TiltCard from './ui/TiltCard'
@@ -23,7 +22,6 @@ function SectionHeader({ label, title, description }: { label: string; title: st
 }
 
 export default function BentoGrid() {
-  const { addItem } = useCart()
   const pillars = makingADifference.pillars
 
   return (
@@ -52,25 +50,16 @@ export default function BentoGrid() {
       <section className="section-pad bg-white">
         <div className="max-w-7xl mx-auto container-pad">
           <SectionHeader label={makingADifference.subtitle} title={makingADifference.title} />
-          <div className="grid md:grid-cols-12 gap-6 md:gap-8">
-            <Reveal className="md:col-span-7">
-              <div className="h-full min-h-[320px] p-10 md:p-14 border border-charcoal/6 bg-cream/50 rounded-2xl shadow-[0_8px_32px_rgba(47,79,62,0.06)] hover:shadow-[0_16px_48px_rgba(47,79,62,0.1)] transition-shadow duration-500">
-                <span className="eyebrow text-forest text-xs">01</span>
-                <h3 className="text-2xl md:text-3xl font-semibold tracking-tight mt-5 mb-5">{pillars[0].title}</h3>
-                <p className="body-lg text-stone max-w-lg">{pillars[0].description}</p>
-              </div>
-            </Reveal>
-            <div className="md:col-span-5 flex flex-col gap-6 md:gap-8">
-              {pillars.slice(1).map((pillar, i) => (
-                <Reveal key={pillar.title} delay={(i + 1) * 0.12}>
-                  <div className="p-10 md:p-14 border border-charcoal/6 bg-cream/50 rounded-2xl flex-1 hover:shadow-[0_12px_40px_rgba(47,79,62,0.08)] transition-shadow duration-500">
-                    <span className="eyebrow text-forest text-xs">0{i + 2}</span>
-                    <h3 className="text-xl font-semibold tracking-tight mt-5 mb-4">{pillar.title}</h3>
-                    <p className="body-lg text-stone">{pillar.description}</p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            {pillars.map((pillar, i) => (
+              <Reveal key={pillar.title} delay={i * 0.12}>
+                <div className="h-full p-10 md:p-14 border border-charcoal/6 bg-cream/50 rounded-2xl shadow-[0_8px_32px_rgba(47,79,62,0.06)] hover:shadow-[0_16px_48px_rgba(47,79,62,0.1)] transition-shadow duration-500">
+                  <span className="eyebrow text-forest text-xs">0{i + 1}</span>
+                  <h3 className="text-xl md:text-2xl font-semibold tracking-tight mt-5 mb-5">{pillar.title}</h3>
+                  <p className="body-lg text-stone">{pillar.description}</p>
+                </div>
+              </Reveal>
+            ))}
           </div>
           <Reveal delay={0.24}>
             <blockquote className="mt-20 md:mt-24 max-w-3xl mx-auto text-center bg-white/60 backdrop-blur-xl rounded-3xl p-12 md:p-16 shadow-[0_8px_32px_rgba(47,79,62,0.06)]">
@@ -111,13 +100,13 @@ export default function BentoGrid() {
 
       <section className="section-pad bg-charcoal text-cream grain-overlay">
         <div className="max-w-7xl mx-auto container-pad relative z-10">
-          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-            <Reveal className="lg:col-span-5">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <Reveal>
               <TiltCard intensity={8}>
                 <img src={assetUrl('assets/artisan-james.jpg')} alt={artisanSpotlight.name} className="w-full aspect-[4/5] object-cover rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.3)]" />
               </TiltCard>
             </Reveal>
-            <Reveal delay={0.1} className="lg:col-span-7 lg:pl-8">
+            <Reveal delay={0.1}>
               <p className="eyebrow text-sage/80 mb-8">{artisanSpotlight.title}</p>
               <blockquote className="text-2xl md:text-3xl leading-[1.6] font-light mb-10">&ldquo;{artisanSpotlight.quote}&rdquo;</blockquote>
               <p className="text-base font-medium">{artisanSpotlight.name}</p>
@@ -152,32 +141,11 @@ export default function BentoGrid() {
             <SectionHeader label="Store" title="Shop handmade" description="Your purchases power education and livelihoods." />
             <CinematicButton to="/shop" variant="outline" size="sm">View all products →</CinematicButton>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-8">
-            {products.slice(0, 4).map((p, i) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+            {products.slice(0, 6).map((p, i) => (
               <ProductCard key={p.id} product={p} index={i} />
             ))}
           </div>
-          <Reveal>
-            <div className="relative overflow-hidden rounded-2xl mt-16 md:mt-20 shadow-[0_20px_60px_rgba(47,79,62,0.25)]">
-              <img src={assetUrl(products[4].image)} alt="" className="absolute inset-0 w-full h-full object-cover ken-burns scale-110" aria-hidden />
-              <div className="absolute inset-0 bg-forest/88" />
-              <motion.div
-                whileHover={{ rotateX: 1, scale: 1.005 }}
-                style={{ transformPerspective: 1200 }}
-                className="relative z-10 p-10 md:p-14 text-cream flex flex-col md:flex-row md:items-center md:justify-between gap-8"
-              >
-                <div>
-                  <p className="text-[11px] uppercase tracking-[0.2em] text-cream/40 mb-2">Featured</p>
-                  <h3 className="text-xl font-semibold tracking-tight">{products[4].name}</h3>
-                  <p className="text-cream/60 text-sm mt-2">{products[4].institute}</p>
-                </div>
-                <div className="flex items-center gap-6">
-                  <p className="text-2xl font-bold">Rs. 2,500</p>
-                  <CinematicButton variant="accent" size="md" onClick={() => addItem(products[4])}>Quick Add</CinematicButton>
-                </div>
-              </motion.div>
-            </div>
-          </Reveal>
         </div>
       </section>
 
