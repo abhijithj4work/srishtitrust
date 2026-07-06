@@ -9,6 +9,8 @@ import { products } from '@shared/products'
 import { useCart } from '../context/CartContext'
 import ProductCard from './ProductCard'
 import CinematicButton from './ui/CinematicButton'
+import TiltCard from './ui/TiltCard'
+import Reveal from './ui/Reveal'
 
 function SectionHeader({ label, title, description }: { label: string; title: string; description?: string }) {
   return (
@@ -41,14 +43,13 @@ export default function BentoGrid() {
                 {whoWeAre.cta} →
               </CinematicButton>
             </motion.div>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.98 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="aspect-[4/5] overflow-hidden"
-            >
-              <img src={assetUrl('assets/making-a-difference.jpg')} alt="Making a difference" className="w-full h-full object-cover" />
-            </motion.div>
+            <Reveal>
+              <TiltCard intensity={6}>
+                <div className="aspect-[4/5] overflow-hidden rounded-2xl shadow-[0_16px_48px_rgba(0,0,0,0.1)]">
+                  <img src={assetUrl('assets/making-a-difference.jpg')} alt="Making a difference" className="w-full h-full object-cover" />
+                </div>
+              </TiltCard>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -95,22 +96,17 @@ export default function BentoGrid() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
             {institutes.map((inst, i) => (
-              <motion.div
-                key={inst.slug}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="group"
-              >
-                <Link to={`/institutes/${inst.slug}`} className="block group">
-                  <div className="aspect-[3/4] overflow-hidden mb-4 shadow-[0_12px_40px_rgba(0,0,0,0.08)] group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] transition-all duration-500">
-                    <img src={assetUrl(inst.image)} alt={inst.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                  </div>
-                  <h3 className="text-sm font-semibold tracking-tight group-hover:text-terracotta transition-colors">{inst.name}</h3>
-                  <p className="text-warm-gray text-xs mt-1.5 leading-relaxed line-clamp-2">{inst.tagline}</p>
-                </Link>
-              </motion.div>
+              <Reveal key={inst.slug} delay={i * 0.05}>
+                <TiltCard intensity={7}>
+                  <Link to={`/institutes/${inst.slug}`} className="block group">
+                    <div className="aspect-[3/4] overflow-hidden mb-4 rounded-xl shadow-[0_12px_40px_rgba(0,0,0,0.08)] group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.14)] transition-all duration-500">
+                      <img src={assetUrl(inst.image)} alt={inst.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    </div>
+                    <h3 className="text-sm font-semibold tracking-tight group-hover:text-terracotta transition-colors">{inst.name}</h3>
+                    <p className="text-warm-gray text-xs mt-1.5 leading-relaxed line-clamp-2">{inst.tagline}</p>
+                  </Link>
+                </TiltCard>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -120,14 +116,11 @@ export default function BentoGrid() {
       <section className="py-24 md:py-32 bg-charcoal text-cream">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="lg:col-span-5"
-            >
-              <img src={assetUrl('assets/artisan-james.jpg')} alt={artisanSpotlight.name} className="w-full aspect-[4/5] object-cover" />
-            </motion.div>
+            <Reveal className="lg:col-span-5">
+              <TiltCard intensity={8}>
+                <img src={assetUrl('assets/artisan-james.jpg')} alt={artisanSpotlight.name} className="w-full aspect-[4/5] object-cover rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.3)]" />
+              </TiltCard>
+            </Reveal>
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -148,12 +141,12 @@ export default function BentoGrid() {
       {/* Women + Sustainability */}
       <section className="py-24 md:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-12 lg:gap-16">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="p-10 md:p-12 border border-charcoal/6">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} whileHover={{ rotateX: 2, scale: 1.01 }} style={{ transformPerspective: 1200 }} className="p-10 md:p-12 border border-charcoal/6 rounded-2xl bg-white/60 backdrop-blur-sm shadow-[0_8px_32px_rgba(0,0,0,0.06)] hover:shadow-[0_16px_48px_rgba(0,0,0,0.1)] transition-shadow duration-500">
             <p className="text-[11px] uppercase tracking-[0.2em] text-warm-gray mb-4">{womenEmpowerment.title}</p>
             <p className="text-charcoal/70 text-sm leading-[1.8] mb-4">{womenEmpowerment.content}</p>
             <p className="text-charcoal/55 text-sm leading-[1.8] italic">{womenEmpowerment.story}</p>
           </motion.div>
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="p-10 md:p-12 bg-olive text-cream">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} whileHover={{ rotateX: 2, scale: 1.01 }} style={{ transformPerspective: 1200 }} className="p-10 md:p-12 bg-olive text-cream rounded-2xl shadow-[0_12px_40px_rgba(0,0,0,0.15)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.2)] transition-shadow duration-500">
             <p className="text-[11px] uppercase tracking-[0.2em] text-cream/50 mb-4">Sustainability</p>
             <p className="text-sm leading-[1.8] text-cream/80 mb-6">{sustainability.intro}</p>
             <p className="text-xs leading-[1.8] text-cream/60">{sustainability.award}</p>

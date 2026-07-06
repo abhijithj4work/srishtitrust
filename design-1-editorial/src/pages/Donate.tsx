@@ -25,7 +25,7 @@ export default function Donate() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1, duration: 0.6 }}
-              className="text-left p-10 md:p-14 border-b border-linen md:odd:border-r hover:bg-linen/20 transition-colors duration-300 group"
+              className="text-left p-10 md:p-14 border-b border-linen md:odd:border-r hover:bg-linen/20 transition-all duration-300 group rounded-lg hover:shadow-[0_12px_40px_rgba(0,0,0,0.06)]"
             >
               <p className="text-3xl md:text-4xl font-semibold tracking-tight text-forest mb-4 group-hover:text-charcoal transition-colors">
                 {item.amount}
@@ -39,7 +39,7 @@ export default function Donate() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
-          className="mt-20 md:mt-28 bg-forest text-cream p-14 md:p-20"
+          className="mt-20 md:mt-28 bg-forest text-cream p-14 md:p-20 rounded-2xl shadow-[0_20px_60px_rgba(47,79,62,0.25)] grain-overlay relative"
         >
           <div className="max-w-xl">
             <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-6">Make a Custom Donation</h2>

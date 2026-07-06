@@ -19,9 +19,9 @@ const variants: Record<Variant, string> = {
 }
 
 const sizes: Record<Size, string> = {
-  sm: 'px-4 py-2 text-[11px] uppercase tracking-widest',
-  md: 'px-7 py-3 text-[13px] uppercase tracking-wider',
-  lg: 'px-9 py-3.5 text-sm uppercase tracking-wider',
+  sm: 'px-4 py-2 text-xs rounded-full',
+  md: 'px-7 py-3 text-[13px] rounded-full',
+  lg: 'px-9 py-3.5 text-sm rounded-full',
 }
 
 interface Props {

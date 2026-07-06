@@ -35,37 +35,46 @@ export default function Navbar() {
           ))}
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <motion.button
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsOpen(true)}
-            className="text-[13px] font-medium text-charcoal/50 hover:text-charcoal transition-colors"
+            className="relative p-2.5 text-charcoal/50 hover:text-charcoal transition-colors"
             aria-label="Open cart"
           >
-            Cart
+            <svg className="w-[18px] h-[18px]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
             <AnimatePresence>
               {itemCount > 0 && (
                 <motion.span
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  className="ml-1 text-forest font-bold"
+                  exit={{ scale: 0 }}
+                  className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-forest text-cream text-[10px] rounded-full flex items-center justify-center font-bold"
                 >
-                  ({itemCount})
+                  {itemCount}
                 </motion.span>
               )}
             </AnimatePresence>
           </motion.button>
 
-          <CinematicButton to="/donate" variant="primary" size="sm">
+          <CinematicButton to="/donate" variant="primary" size="sm" className="hidden sm:inline-flex">
             Donate
           </CinematicButton>
 
           <button
-            className="lg:hidden text-[13px] font-medium text-charcoal"
+            className="lg:hidden p-2 text-charcoal"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
-            {mobileOpen ? 'Close' : 'Menu'}
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {mobileOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
           </button>
         </div>
       </div>

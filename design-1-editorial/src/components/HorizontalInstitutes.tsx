@@ -67,12 +67,12 @@ export default function HorizontalInstitutes({ showHeader = true }: { showHeader
               className="flex-shrink-0 w-[340px] md:w-[380px] snap-start group"
               draggable={false}
             >
-              <article className="bg-cream border border-linen shadow-[0_12px_40px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-shadow duration-500">
+              <article className="bg-cream border border-linen/80 hover:border-forest/20 transition-all duration-500">
                 <div className="aspect-[3/4] overflow-hidden">
                   <img
                     src={assetUrl(institute.image)}
                     alt={institute.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                 </div>
                 <div className="p-8">

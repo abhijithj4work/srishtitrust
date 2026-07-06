@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useCart } from '../context/CartContext'
 import { formatPrice } from '@shared/products'
 import { useReducedMotion } from '../hooks/useReducedMotion'
+import CinematicButton from './ui/CinematicButton'
 
 export default function CartDrawer() {
   const { items, isOpen, setIsOpen, removeItem, updateQuantity, total, clearCart, showToast } = useCart()
@@ -91,12 +92,9 @@ export default function CartDrawer() {
                   <span className="text-mist/50 text-sm uppercase tracking-widest">Subtotal</span>
                   <span className="font-display text-lg text-gold">{formatPrice(total)}</span>
                 </div>
-                <button
-                  onClick={handleCheckout}
-                  className="w-full py-3.5 bg-gold text-night text-sm uppercase tracking-widest font-medium hover:bg-mist transition-colors"
-                >
+                <CinematicButton variant="primary" size="md" fullWidth onClick={handleCheckout}>
                   Checkout
-                </button>
+                </CinematicButton>
               </div>
             )}
           </motion.div>

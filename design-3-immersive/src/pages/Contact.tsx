@@ -49,7 +49,7 @@ export default function Contact() {
         <motion.div
           initial={reduced ? false : { opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="bg-night-light border border-gold/10 p-10 md:p-12"
+          className="bg-night-light/80 backdrop-blur-sm border border-gold/15 rounded-2xl p-10 md:p-12 shadow-[0_16px_48px_rgba(0,0,0,0.35)]"
         >
           {submitted ? (
             <div className="text-center py-20">
@@ -63,7 +63,7 @@ export default function Contact() {
                 <input
                   id="name"
                   required
-                  className="w-full px-4 py-3.5 bg-night border border-gold/10 text-mist focus:outline-none focus:border-gold/40 transition-colors"
+                  className="w-full px-4 py-3.5 bg-night border border-gold/10 text-mist rounded-lg focus:outline-none focus:border-gold/40 transition-colors"
                 />
               </div>
               <div>
@@ -72,7 +72,7 @@ export default function Contact() {
                   id="email"
                   type="email"
                   required
-                  className="w-full px-4 py-3.5 bg-night border border-gold/10 text-mist focus:outline-none focus:border-gold/40 transition-colors"
+                  className="w-full px-4 py-3.5 bg-night border border-gold/10 text-mist rounded-lg focus:outline-none focus:border-gold/40 transition-colors"
                 />
               </div>
               <div>
@@ -81,7 +81,7 @@ export default function Contact() {
                   id="message"
                   required
                   rows={5}
-                  className="w-full px-4 py-3.5 bg-night border border-gold/10 text-mist focus:outline-none focus:border-gold/40 resize-none transition-colors"
+                  className="w-full px-4 py-3.5 bg-night border border-gold/10 text-mist rounded-lg focus:outline-none focus:border-gold/40 resize-none transition-colors"
                 />
               </div>
               <CinematicButton type="submit" variant="primary" size="md" fullWidth>

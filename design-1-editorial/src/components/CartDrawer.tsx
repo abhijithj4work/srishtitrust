@@ -2,6 +2,7 @@ import { assetUrl } from '@shared/assetUrl'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useCart } from '../context/CartContext'
 import { formatPrice } from '@shared/products'
+import CinematicButton from './ui/CinematicButton'
 
 export default function CartDrawer() {
   const { items, isOpen, setIsOpen, removeItem, updateQuantity, total, clearCart, showToast } = useCart()
@@ -99,12 +100,9 @@ export default function CartDrawer() {
                   <span className="text-[11px] tracking-[0.2em] uppercase text-stone">Subtotal</span>
                   <span className="font-display text-2xl">{formatPrice(total)}</span>
                 </div>
-                <button
-                  onClick={handleCheckout}
-                  className="w-full py-4 bg-forest text-cream text-[11px] tracking-[0.2em] uppercase hover:bg-charcoal transition-colors duration-300"
-                >
+                <CinematicButton variant="primary" size="md" fullWidth onClick={handleCheckout}>
                   Proceed to Checkout
-                </button>
+                </CinematicButton>
               </div>
             )}
           </motion.aside>

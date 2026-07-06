@@ -54,7 +54,7 @@ export default function AnimatedCounters() {
           Our Impact
         </motion.p>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
           {impactStats.map((stat, i) => (
             <motion.div
               key={stat.label}
@@ -62,7 +62,7 @@ export default function AnimatedCounters() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.6 }}
-              className="text-center"
+              className="text-center lg:text-left border-l border-gold/15 pl-6 first:border-0 first:pl-0"
             >
               <p className="font-display text-5xl md:text-6xl text-gold-gradient mb-3">
                 <Counter value={stat.value} suffix={stat.suffix} />

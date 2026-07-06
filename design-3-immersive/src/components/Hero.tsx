@@ -4,6 +4,13 @@ import { heroContent } from '@shared/content'
 import { assetUrl } from '@shared/assetUrl'
 import { useReducedMotion } from '../hooks/useReducedMotion'
 import CinematicButton from './ui/CinematicButton'
+import Reveal from './ui/Reveal'
+
+const pillars = [
+  { title: 'Naturally dyed', subtitle: 'Roots, barks & leaves' },
+  { title: 'Handcrafted', subtitle: 'By skilled artisans' },
+  { title: 'Empowering', subtitle: 'Since 1991, Munnar' },
+]
 
 export default function Hero() {
   const reduced = useReducedMotion()
@@ -69,7 +76,7 @@ export default function Hero() {
           initial={reduced ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.75, duration: 0.6 }}
-          className="flex flex-wrap gap-4"
+          className="flex flex-wrap gap-4 mb-16 md:mb-0"
         >
           <CinematicButton to="/donate" variant="primary">
             {heroContent.ctaPrimary}
@@ -78,6 +85,18 @@ export default function Hero() {
             {heroContent.ctaSecondary}
           </CinematicButton>
         </motion.div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-12 md:mt-20 max-w-3xl">
+          {pillars.map((pillar, i) => (
+            <Reveal key={pillar.title} delay={0.85 + i * 0.1}>
+              <div className="bg-night/50 backdrop-blur-xl border border-gold/15 p-6 rounded-xl hover:border-gold/35 transition-colors duration-500">
+                <span className="text-gold/60 text-[10px] font-semibold tracking-[0.2em]">0{i + 1}</span>
+                <h3 className="text-mist text-sm font-semibold mt-3 tracking-tight">{pillar.title}</h3>
+                <p className="text-mist/45 text-xs mt-1.5 leading-relaxed">{pillar.subtitle}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
       </motion.div>
 
       {!reduced && (

@@ -18,14 +18,14 @@ export default function Donate() {
           <p className="text-mist/50 text-base md:text-lg leading-[1.85] mb-16 md:mb-24 max-w-2xl mx-auto">{donateContent.subtitle}</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-gold/10 mb-16 md:mb-24">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-16 md:mb-24">
           {donateContent.impact.map((item, i) => (
             <motion.button
               key={item.amount}
               initial={reduced ? false : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
-              className="bg-night p-10 md:p-14 text-left group hover:bg-night-light transition-colors"
+              className="bg-night-light border border-gold/15 rounded-xl p-10 md:p-14 text-left group hover:border-gold/35 hover:shadow-[0_12px_40px_rgba(0,0,0,0.3)] transition-all duration-500"
             >
               <p className="text-3xl md:text-4xl font-semibold tracking-tight text-gold mb-4 group-hover:scale-105 transition-transform inline-block motion-reduce:transform-none">
                 {item.amount}
@@ -39,7 +39,7 @@ export default function Donate() {
           initial={reduced ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
-          className="border border-gold/20 p-12 md:p-16 grain-overlay relative"
+          className="border border-gold/20 rounded-2xl p-12 md:p-16 grain-overlay relative bg-night-light/80 backdrop-blur-sm shadow-[0_20px_60px_rgba(0,0,0,0.4)]"
         >
           <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-mist mb-5">Make a Custom Donation</h2>
           <p className="text-mist/40 text-sm leading-[1.85] mb-10 max-w-md mx-auto">

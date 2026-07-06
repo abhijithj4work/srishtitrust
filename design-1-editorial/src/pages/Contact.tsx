@@ -54,12 +54,12 @@ export default function Contact() {
           className="lg:col-span-7"
         >
           {submitted ? (
-            <div className="border border-linen p-16 md:p-20 text-center">
+            <div className="border border-linen p-16 md:p-20 text-center rounded-2xl shadow-[0_12px_40px_rgba(0,0,0,0.06)] bg-white">
               <p className="text-2xl font-semibold tracking-tight text-forest mb-4">Thank you</p>
               <p className="text-stone">We&apos;ll get back to you soon. (POC — no backend)</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-10">
+            <form onSubmit={handleSubmit} className="space-y-10 p-10 md:p-14 rounded-2xl border border-linen bg-white shadow-[0_12px_40px_rgba(0,0,0,0.06)]">
               <div>
                 <label htmlFor="name" className="block text-[10px] tracking-[0.25em] uppercase text-stone mb-3">
                   Name

@@ -56,12 +56,18 @@ export default function ProductCard({ product, index = 0, layout = 'horizontal' 
     >
       <div className="md:col-span-5">
         <TiltCard intensity={6}>
-          <div className="aspect-[4/5] bg-linen/30 overflow-hidden shadow-[0_16px_48px_rgba(0,0,0,0.1)]">
+          <div className="relative aspect-[4/5] bg-linen/30 overflow-hidden shadow-[0_16px_48px_rgba(0,0,0,0.1)] group/img">
             <img
               src={assetUrl(product.image)}
               alt={product.name}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-105"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/50 via-transparent to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-500" />
+            <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover/img:translate-y-0 transition-transform duration-500 ease-out">
+              <CinematicButton variant="primary" size="sm" onClick={() => addItem(product)} fullWidth>
+                Quick Add
+              </CinematicButton>
+            </div>
           </div>
         </TiltCard>
       </div>
@@ -76,12 +82,7 @@ export default function ProductCard({ product, index = 0, layout = 'horizontal' 
         <p className="text-charcoal/55 text-sm leading-relaxed mb-6 max-w-md">
           {product.description}
         </p>
-        <div className="flex flex-wrap items-center gap-4">
-          <p className="text-xl font-bold text-charcoal">{formatPrice(product.price)}</p>
-          <CinematicButton variant="primary" size="md" onClick={() => addItem(product)}>
-            Add to cart
-          </CinematicButton>
-        </div>
+        <p className="text-xl font-bold text-forest">{formatPrice(product.price)}</p>
       </div>
     </motion.article>
   )

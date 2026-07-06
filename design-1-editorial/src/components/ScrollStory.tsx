@@ -72,11 +72,11 @@ function StoryPanel({
               panel.align === 'right' ? 'lg:order-2' : 'lg:order-1'
             }`}
           >
-            <div className="aspect-[4/5] lg:aspect-[5/6] relative">
+            <div className="aspect-[4/5] lg:aspect-[5/6] relative overflow-hidden">
               <img
                 src={assetUrl(panel.image)}
                 alt={panel.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover ken-burns"
               />
               <div className="absolute inset-0 bg-forest/5" />
             </div>

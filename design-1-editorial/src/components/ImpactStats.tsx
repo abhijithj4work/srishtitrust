@@ -34,13 +34,13 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
 
 export default function ImpactStats() {
   return (
-    <section className="py-28 md:py-36 bg-forest text-cream">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+    <section className="py-28 md:py-36 bg-forest text-cream grain-overlay">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 relative z-10">
         <p className="text-[11px] tracking-[0.2em] uppercase text-cream/40 mb-16 md:mb-20 text-center">
           Impact at a Glance
         </p>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 md:gap-16">
           {impactStats.map((stat, i) => (
             <motion.div
               key={stat.label}
@@ -48,9 +48,9 @@ export default function ImpactStats() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.12, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-              className="text-center lg:text-left"
+              className="text-center lg:text-left border-l border-cream/15 pl-6 lg:first:border-0 lg:first:pl-0"
             >
-              <p className="text-4xl md:text-5xl font-semibold tracking-tight mb-4">
+              <p className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
                 <Counter value={stat.value} suffix={stat.suffix} />
               </p>
               <p className="text-[11px] tracking-[0.2em] uppercase text-cream/50">

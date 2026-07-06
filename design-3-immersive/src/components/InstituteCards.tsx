@@ -33,22 +33,49 @@ export default function InstituteCards({ institutes, showAll = false }: Institut
           <div className="absolute inset-0 bg-gradient-to-t from-night via-transparent to-transparent" />
 
           <div className="relative z-10 h-full flex flex-col justify-end p-8 md:p-16 max-w-7xl mx-auto">
-            <p className="text-gold text-xs uppercase tracking-[0.3em] mb-3 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 motion-reduce:opacity-100 motion-reduce:translate-y-0">
-              0{i + 1} — Institute
-            </p>
-            <h3 className="font-display text-3xl md:text-5xl text-mist mb-3">{institute.name}</h3>
-            <p className="text-mist/50 max-w-lg text-sm md:text-base leading-relaxed opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-32 transition-all duration-500 overflow-hidden motion-reduce:opacity-100 motion-reduce:max-h-32">
-              {institute.tagline}
-            </p>
-            <Link
-              to={`/institutes/${institute.slug}`}
-              className="inline-flex items-center gap-2 text-gold text-xs uppercase tracking-widest mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 motion-reduce:opacity-100"
+            <motion.p
+              initial={reduced ? false : { opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ delay: 0.1 + i * 0.05, duration: 0.6 }}
+              className="text-gold text-xs uppercase tracking-[0.3em] mb-3"
             >
-              Explore
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
+              0{i + 1} — Institute
+            </motion.p>
+            <motion.h3
+              initial={reduced ? false : { opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ delay: 0.15 + i * 0.05, duration: 0.7 }}
+              className="font-display text-3xl md:text-5xl text-mist mb-3"
+            >
+              {institute.name}
+            </motion.h3>
+            <motion.p
+              initial={reduced ? false : { opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ delay: 0.2 + i * 0.05, duration: 0.7 }}
+              className="text-mist/50 max-w-lg text-sm md:text-base leading-relaxed"
+            >
+              {institute.tagline}
+            </motion.p>
+            <motion.div
+              initial={reduced ? false : { opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ delay: 0.25 + i * 0.05, duration: 0.6 }}
+            >
+              <Link
+                to={`/institutes/${institute.slug}`}
+                className="inline-flex items-center gap-2 text-gold text-xs uppercase tracking-widest mt-6 hover:gap-3 transition-all duration-300"
+              >
+                Explore
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+            </motion.div>
           </div>
         </motion.div>
       ))}

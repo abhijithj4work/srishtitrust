@@ -31,7 +31,7 @@ export default function Shop() {
               key={cat}
               onClick={() => setActiveCategory(cat)}
               whileTap={{ scale: 0.95 }}
-              className={`px-5 py-2 text-[13px] font-semibold transition-all duration-300 ${
+              className={`px-5 py-2 text-[13px] font-semibold rounded-full transition-all duration-300 ${
                 activeCategory === cat
                   ? 'bg-forest text-cream shadow-[0_3px_0_#1e3328,0_6px_20px_rgba(47,79,62,0.25)]'
                   : 'text-charcoal/45 hover:text-charcoal border border-charcoal/10 hover:border-forest/30'
