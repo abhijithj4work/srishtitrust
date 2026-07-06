@@ -32,7 +32,7 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="bg-charcoal text-cream/70 mt-0">
+    <footer className="relative z-10 mt-16 md:mt-24 bg-charcoal text-cream/70">
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-20 md:py-24 grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
         <div className="md:col-span-4">
           <p className="text-sm font-semibold tracking-[0.12em] uppercase text-cream mb-5">Srishti</p>

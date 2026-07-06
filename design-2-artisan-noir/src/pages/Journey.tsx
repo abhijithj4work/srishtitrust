@@ -3,7 +3,7 @@ import Reveal from '../components/ui/Reveal'
 
 export default function Journey() {
   return (
-    <div className="page-top pb-36 md:pb-48">
+    <div className="page-top page-bottom">
       <div className="max-w-5xl mx-auto container-pad">
         <Reveal>
           <div className="mb-20 md:mb-28 pb-12 border-b border-gold/10 max-w-2xl">

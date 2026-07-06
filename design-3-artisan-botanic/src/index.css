@@ -14,6 +14,7 @@
   --color-olive: #3D5A45;
   --font-display: 'Sora', system-ui, sans-serif;
   --font-body: 'Figtree', system-ui, sans-serif;
+  --nav-height: 5rem;
 }
 
 * {
@@ -22,8 +23,13 @@
   box-sizing: border-box;
 }
 
+:root {
+  --nav-height: 5rem;
+}
+
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-height) + 1rem);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -136,16 +142,20 @@ h1, h2, h3, h4 {
   line-height: 1.85;
 }
 
-:root {
-  --nav-height: 5rem;
+.page-top {
+  padding-top: calc(var(--nav-height) + 8rem);
 }
 
-.page-top {
-  padding-top: calc(var(--nav-height) + 5rem);
+.page-bottom {
+  padding-bottom: 8rem;
 }
 
 @media (min-width: 768px) {
   .page-top {
-    padding-top: calc(var(--nav-height) + 6rem);
+    padding-top: calc(var(--nav-height) + 10rem);
+  }
+
+  .page-bottom {
+    padding-bottom: 10rem;
   }
 }

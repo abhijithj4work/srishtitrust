@@ -12,7 +12,7 @@ export default function Contact() {
   }
 
   return (
-    <div className="page-top pb-36 md:pb-48">
+    <div className="page-top page-bottom">
       <div className="max-w-7xl mx-auto container-pad grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
         <motion.div initial={{ opacity: 0, x: -24 }} animate={{ opacity: 1, x: 0 }}>
           <p className="eyebrow text-stone mb-6">Get in Touch</p>

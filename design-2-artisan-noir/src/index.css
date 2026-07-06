@@ -12,6 +12,7 @@
   --color-cream: #E8E4DC;
   --font-display: 'Syne', system-ui, sans-serif;
   --font-body: 'DM Sans', system-ui, sans-serif;
+  --nav-height: 5rem;
 }
 
 * {
@@ -22,6 +23,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-height) + 1rem);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -134,11 +136,19 @@ h1, h2, h3, h4 {
 }
 
 .page-top {
-  padding-top: calc(var(--nav-height) + 5rem);
+  padding-top: calc(var(--nav-height) + 8rem);
+}
+
+.page-bottom {
+  padding-bottom: 8rem;
 }
 
 @media (min-width: 768px) {
   .page-top {
-    padding-top: calc(var(--nav-height) + 6rem);
+    padding-top: calc(var(--nav-height) + 10rem);
+  }
+
+  .page-bottom {
+    padding-bottom: 10rem;
   }
 }

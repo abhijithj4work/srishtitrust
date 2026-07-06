@@ -16,22 +16,24 @@ export default function App() {
   const location = useLocation()
 
   return (
-    <>
+    <div className="flex min-h-screen flex-col">
       <Navbar />
       <CartDrawer />
       <Toast />
-      <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<PageTransition><Home /></PageTransition>} />
-          <Route path="/journey" element={<PageTransition><Journey /></PageTransition>} />
-          <Route path="/institutes" element={<PageTransition><Institutes /></PageTransition>} />
-          <Route path="/institutes/:slug" element={<PageTransition><InstituteDetail /></PageTransition>} />
-          <Route path="/shop" element={<PageTransition><Shop /></PageTransition>} />
-          <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
-          <Route path="/donate" element={<PageTransition><Donate /></PageTransition>} />
-        </Routes>
-      </AnimatePresence>
+      <main className="flex-1">
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<PageTransition><Home /></PageTransition>} />
+            <Route path="/journey" element={<PageTransition><Journey /></PageTransition>} />
+            <Route path="/institutes" element={<PageTransition><Institutes /></PageTransition>} />
+            <Route path="/institutes/:slug" element={<PageTransition><InstituteDetail /></PageTransition>} />
+            <Route path="/shop" element={<PageTransition><Shop /></PageTransition>} />
+            <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
+            <Route path="/donate" element={<PageTransition><Donate /></PageTransition>} />
+          </Routes>
+        </AnimatePresence>
+      </main>
       <Footer />
-    </>
+    </div>
   )
 }

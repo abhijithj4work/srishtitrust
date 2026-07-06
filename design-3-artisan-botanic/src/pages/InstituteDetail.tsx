@@ -11,7 +11,7 @@ export default function InstituteDetail() {
 
   if (!institute) {
     return (
-      <div className="page-top pb-20 text-center">
+      <div className="page-top page-bottom text-center">
         <h1 className="font-display text-3xl mb-4">Institute not found</h1>
         <Link to="/institutes" className="text-terracotta">← Back to Institutes</Link>
       </div>
@@ -24,7 +24,7 @@ export default function InstituteDetail() {
   )
 
   return (
-    <div className="page-top pb-20">
+    <div className="page-top page-bottom">
       <div className="relative h-[50vh] min-h-[400px]">
         <img src={assetUrl(institute.image)} alt={institute.name} className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/30 to-transparent" />
