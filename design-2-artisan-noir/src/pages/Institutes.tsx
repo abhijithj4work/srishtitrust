@@ -4,20 +4,20 @@ import { motion } from 'framer-motion'
 
 export default function Institutes() {
   return (
-    <div className="pt-28 pb-28 md:pb-36">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+    <div className="pt-32 pb-36 md:pb-48">
+      <div className="max-w-7xl mx-auto container-pad">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center max-w-3xl mx-auto mb-16 md:mb-24"
+          className="text-center max-w-3xl mx-auto mb-20 md:mb-28"
         >
-          <p className="text-[11px] tracking-[0.2em] uppercase text-warm-gray mb-5">Eight Institutes</p>
-          <h1 className="text-3xl md:text-5xl font-semibold tracking-tight mb-6">{institutesIntro.title}</h1>
-          <p className="text-warm-gray leading-[1.85] text-base">{institutesIntro.description}</p>
-          <p className="text-charcoal font-medium mt-6 text-sm italic">{institutesIntro.highlight}</p>
+          <p className="eyebrow text-gold/70 mb-6">Eight Institutes</p>
+          <h1 className="display-section font-semibold text-mist mb-8">{institutesIntro.title}</h1>
+          <p className="body-lg text-mist/45">{institutesIntro.description}</p>
+          <p className="text-gold font-medium mt-8 body-lg italic">{institutesIntro.highlight}</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
           {institutes.map((inst, i) => (
             <InstituteCard key={inst.slug} institute={inst} index={i} />
           ))}

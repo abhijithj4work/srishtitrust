@@ -89,3 +89,49 @@ h1, h2, h3, h4 {
   opacity: 0.04;
   background: radial-gradient(ellipse at 80% 20%, var(--color-sage) 0%, transparent 60%);
 }
+
+.section-pad {
+  padding-top: 9rem;
+  padding-bottom: 9rem;
+}
+@media (min-width: 768px) {
+  .section-pad {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+  }
+}
+
+.container-pad {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+@media (min-width: 1024px) {
+  .container-pad {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+.display-hero {
+  font-size: clamp(2.75rem, 6vw, 5.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.display-section {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.eyebrow {
+  font-size: 0.875rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.body-lg {
+  font-size: 1.125rem;
+  line-height: 1.85;
+}

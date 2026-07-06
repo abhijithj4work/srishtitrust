@@ -19,9 +19,9 @@ const variants: Record<Variant, string> = {
 }
 
 const sizes: Record<Size, string> = {
-  sm: 'px-4 py-2 text-xs rounded-full',
-  md: 'px-7 py-3 text-[13px] rounded-full',
-  lg: 'px-9 py-3.5 text-sm rounded-full',
+  sm: 'px-6 py-3 text-sm rounded-full',
+  md: 'px-9 py-4 text-sm rounded-full',
+  lg: 'px-12 py-5 text-base rounded-full',
 }
 
 interface Props {
@@ -71,11 +71,15 @@ export default function CinematicButton({
   )
 
   if (to) {
-    return <Link to={to} className={base}>{inner}</Link>
+    return (
+      <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }} className={fullWidth ? 'w-full' : 'inline-flex'}>
+        <Link to={to} className={base}>{inner}</Link>
+      </motion.div>
+    )
   }
 
   return (
-    <motion.button type={type} onClick={onClick} className={base} whileTap={{ scale: 0.97 }}>
+    <motion.button type={type} onClick={onClick} className={base} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}>
       {inner}
     </motion.button>
   )
