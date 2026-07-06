@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 export default function Institutes() {
   return (
-    <div className="pt-32 pb-36 md:pb-48">
+    <div className="page-top pb-36 md:pb-48">
       <div className="max-w-7xl mx-auto container-pad">
         <motion.div
           initial={{ opacity: 0, y: 24 }}

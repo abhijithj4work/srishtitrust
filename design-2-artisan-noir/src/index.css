@@ -128,3 +128,17 @@ h1, h2, h3, h4 {
   font-size: 1.125rem;
   line-height: 1.85;
 }
+
+:root {
+  --nav-height: 5rem;
+}
+
+.page-top {
+  padding-top: calc(var(--nav-height) + 5rem);
+}
+
+@media (min-width: 768px) {
+  .page-top {
+    padding-top: calc(var(--nav-height) + 6rem);
+  }
+}

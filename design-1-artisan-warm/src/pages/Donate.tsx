@@ -4,7 +4,7 @@ import CinematicButton from '../components/ui/CinematicButton'
 
 export default function Donate() {
   return (
-    <div className="pt-32 pb-36 md:pb-48">
+    <div className="page-top pb-36 md:pb-48">
       <div className="max-w-4xl mx-auto container-pad text-center">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}>
           <p className="eyebrow text-warm-gray mb-6">Give Back</p>

@@ -13,7 +13,7 @@ export default function Shop() {
     : products.filter(p => p.category === activeCategory)
 
   return (
-    <div className="pt-32 pb-36 md:pb-48">
+    <div className="page-top pb-36 md:pb-48">
       <div className="max-w-7xl mx-auto container-pad">
         <Reveal className="mb-20 pb-12 border-b border-charcoal/8">
           <p className="eyebrow text-stone mb-6">Store</p>
