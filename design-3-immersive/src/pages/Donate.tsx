@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { donateContent } from '@shared/content'
 import { useReducedMotion } from '../hooks/useReducedMotion'
+import CinematicButton from '../components/ui/CinematicButton'
 
 export default function Donate() {
   const reduced = useReducedMotion()
@@ -44,9 +45,9 @@ export default function Donate() {
           <p className="text-mist/40 text-sm leading-[1.85] mb-10 max-w-md mx-auto">
             Every contribution helps us reach more children and create sustainable livelihoods.
           </p>
-          <button className="px-10 py-3.5 bg-gold text-night text-sm uppercase tracking-widest font-medium hover:bg-mist transition-colors">
+          <CinematicButton variant="primary" size="lg">
             Donate Now (POC)
-          </button>
+          </CinematicButton>
         </motion.div>
       </div>
     </div>

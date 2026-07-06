@@ -37,9 +37,9 @@ export default function BentoGrid() {
             >
               <SectionHeader label="About" title={whoWeAre.title} />
               <p className="text-charcoal/65 text-base leading-[1.8] mb-8">{whoWeAre.content}</p>
-              <Link to="/journey" className="inline-flex items-center gap-2 text-sm font-medium text-charcoal border-b border-charcoal/20 pb-1 hover:border-charcoal transition-colors">
+              <CinematicButton to="/journey" variant="outline" size="sm">
                 {whoWeAre.cta} →
-              </Link>
+              </CinematicButton>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, scale: 0.98 }}
@@ -89,9 +89,9 @@ export default function BentoGrid() {
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16">
             <SectionHeader label="Welfare" title={institutesIntro.title} description={institutesIntro.highlight} />
-            <Link to="/institutes" className="text-sm font-medium text-charcoal shrink-0 border-b border-charcoal/20 pb-1 hover:border-charcoal">
+            <CinematicButton to="/institutes" variant="outline" size="sm">
               View all →
-            </Link>
+            </CinematicButton>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
             {institutes.map((inst, i) => (
@@ -103,9 +103,9 @@ export default function BentoGrid() {
                 transition={{ delay: i * 0.05 }}
                 className="group"
               >
-                <Link to={`/institutes/${inst.slug}`} className="block">
-                  <div className="aspect-[3/4] overflow-hidden mb-4">
-                    <img src={assetUrl(inst.image)} alt={inst.name} className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700" />
+                <Link to={`/institutes/${inst.slug}`} className="block group">
+                  <div className="aspect-[3/4] overflow-hidden mb-4 shadow-[0_12px_40px_rgba(0,0,0,0.08)] group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] transition-all duration-500">
+                    <img src={assetUrl(inst.image)} alt={inst.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   </div>
                   <h3 className="text-sm font-semibold tracking-tight group-hover:text-terracotta transition-colors">{inst.name}</h3>
                   <p className="text-warm-gray text-xs mt-1.5 leading-relaxed line-clamp-2">{inst.tagline}</p>
@@ -166,7 +166,9 @@ export default function BentoGrid() {
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16">
             <SectionHeader label="Store" title="Shop handmade" description="Your purchases power education and livelihoods." />
-            <Link to="/shop" className="text-sm font-medium shrink-0 border-b border-charcoal/20 pb-1 hover:border-charcoal">View all products →</Link>
+            <CinematicButton to="/shop" variant="outline" size="sm">
+              View all products →
+            </CinematicButton>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-8">
             {products.slice(0, 4).map((p, i) => (
@@ -177,15 +179,21 @@ export default function BentoGrid() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-16 md:mt-20 p-10 md:p-14 bg-charcoal text-cream flex flex-col md:flex-row md:items-center md:justify-between gap-8 cursor-pointer"
-            onClick={() => addItem(products[4])}
+            whileHover={{ rotateX: 2, scale: 1.01 }}
+            style={{ transformPerspective: 1200 }}
+            className="mt-16 md:mt-20 p-10 md:p-14 bg-charcoal text-cream flex flex-col md:flex-row md:items-center md:justify-between gap-8 rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.2)]"
           >
             <div>
               <p className="text-[11px] uppercase tracking-[0.2em] text-cream/40 mb-2">Featured</p>
               <h3 className="text-xl font-semibold tracking-tight">{products[4].name}</h3>
               <p className="text-cream/60 text-sm mt-2">{products[4].institute}</p>
             </div>
-            <p className="text-2xl font-semibold">Rs. 2,500</p>
+            <div className="flex items-center gap-6">
+              <p className="text-2xl font-bold">Rs. 2,500</p>
+              <CinematicButton variant="accent" size="md" onClick={() => addItem(products[4])}>
+                Quick Add
+              </CinematicButton>
+            </div>
           </motion.div>
         </div>
       </section>

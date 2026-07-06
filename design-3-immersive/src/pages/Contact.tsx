@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { siteInfo } from '@shared/content'
 import { useReducedMotion } from '../hooks/useReducedMotion'
+import CinematicButton from '../components/ui/CinematicButton'
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
@@ -83,12 +84,9 @@ export default function Contact() {
                   className="w-full px-4 py-3.5 bg-night border border-gold/10 text-mist focus:outline-none focus:border-gold/40 resize-none transition-colors"
                 />
               </div>
-              <button
-                type="submit"
-                className="w-full py-3.5 bg-gold text-night text-sm uppercase tracking-widest font-medium hover:bg-mist transition-colors"
-              >
+              <CinematicButton type="submit" variant="primary" size="md" fullWidth>
                 Send Message
-              </button>
+              </CinematicButton>
             </form>
           )}
         </motion.div>

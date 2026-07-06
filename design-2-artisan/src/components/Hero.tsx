@@ -53,10 +53,10 @@ export default function Hero() {
             {heroContent.subtitle}
           </p>
           <div className="flex flex-wrap gap-4">
-            <CinematicButton to="/shop" variant="primary" className="!bg-cream !text-charcoal !shadow-[0_4px_0_#d4d0c8,0_8px_32px_rgba(0,0,0,0.2)]">
+            <CinematicButton to="/shop" variant="accent" size="md">
               Shop collection
             </CinematicButton>
-            <CinematicButton to="/journey" variant="secondary">
+            <CinematicButton to="/journey" variant="secondary" size="md">
               Our story
             </CinematicButton>
           </div>

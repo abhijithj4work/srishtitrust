@@ -49,10 +49,10 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-wrap gap-4">
-            <CinematicButton to="/donate" variant="primary">
+            <CinematicButton to="/donate" variant="accent" size="lg">
               {heroContent.ctaPrimary}
             </CinematicButton>
-            <CinematicButton to="/journey" variant="secondary">
+            <CinematicButton to="/journey" variant="outline" size="lg" className="!border-cream/35 !text-cream hover:!bg-cream/10 hover:!text-cream !shadow-none">
               {heroContent.ctaSecondary}
             </CinematicButton>
           </div>

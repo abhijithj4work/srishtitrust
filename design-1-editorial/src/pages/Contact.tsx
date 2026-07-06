@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { siteInfo } from '@shared/content'
+import CinematicButton from '../components/ui/CinematicButton'
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
@@ -91,12 +92,9 @@ export default function Contact() {
                   className="w-full px-0 py-3 border-b border-linen bg-transparent focus:outline-none focus:border-forest transition-colors resize-none"
                 />
               </div>
-              <button
-                type="submit"
-                className="text-[11px] tracking-[0.2em] uppercase text-forest border-b border-forest pb-1 hover:text-charcoal hover:border-charcoal transition-colors"
-              >
+              <CinematicButton type="submit" variant="primary" size="md">
                 Send Message
-              </button>
+              </CinematicButton>
             </form>
           )}
         </motion.div>

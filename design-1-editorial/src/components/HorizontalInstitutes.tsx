@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { motion, useMotionValue, animate } from 'framer-motion'
 import { institutes, institutesIntro } from '@shared/content'
 import { assetUrl } from '@shared/assetUrl'
+import CinematicButton from './ui/CinematicButton'
 
 export default function HorizontalInstitutes({ showHeader = true }: { showHeader?: boolean }) {
   const wrapperRef = useRef<HTMLDivElement>(null)
@@ -66,12 +67,12 @@ export default function HorizontalInstitutes({ showHeader = true }: { showHeader
               className="flex-shrink-0 w-[340px] md:w-[380px] snap-start group"
               draggable={false}
             >
-              <article className="bg-cream border border-linen">
+              <article className="bg-cream border border-linen shadow-[0_12px_40px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-shadow duration-500">
                 <div className="aspect-[3/4] overflow-hidden">
                   <img
                     src={assetUrl(institute.image)}
                     alt={institute.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
                 <div className="p-8">
@@ -91,13 +92,10 @@ export default function HorizontalInstitutes({ showHeader = true }: { showHeader
         </motion.div>
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-8 lg:px-16 mt-12">
-        <Link
-          to="/institutes"
-          className="text-[11px] tracking-[0.2em] uppercase text-forest border-b border-forest/30 pb-1 hover:border-forest transition-colors"
-        >
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 mt-12">
+        <CinematicButton to="/institutes" variant="outline" size="sm">
           View all institutes →
-        </Link>
+        </CinematicButton>
       </div>
     </section>
   )

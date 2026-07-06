@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react'
-import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import CinematicButton from '../components/ui/CinematicButton'
 import Hero from '../components/Hero'
 import OpeningSequence from '../components/OpeningSequence'
 import AnimatedCounters from '../components/AnimatedCounters'
@@ -40,9 +40,9 @@ export default function Home() {
               {whoWeAre.content.split('.')[0]}.
             </p>
             <p className="text-mist/50 text-sm md:text-base leading-[1.85] mb-10">{whoWeAre.content}</p>
-            <Link to="/journey" className="inline-flex items-center gap-2 text-gold text-sm font-medium hover:gap-3 transition-all">
+            <CinematicButton to="/journey" variant="outline" size="sm">
               {whoWeAre.cta} →
-            </Link>
+            </CinematicButton>
           </motion.div>
         </div>
       </ScrollScrubbedSection>
@@ -87,9 +87,9 @@ export default function Home() {
         </div>
         <InstituteCards institutes={institutes} />
         <div className="text-center mt-14">
-          <Link to="/institutes" className="inline-flex px-6 py-2.5 border border-gold/30 text-gold text-sm font-medium hover:bg-gold hover:text-night transition-all">
+          <CinematicButton to="/institutes" variant="outline" size="md">
             View all institutes
-          </Link>
+          </CinematicButton>
         </div>
       </section>
 
@@ -126,7 +126,9 @@ export default function Home() {
               <p className="text-gold/70 text-[11px] uppercase tracking-[0.25em] mb-4">Store</p>
               <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-mist">Shop handmade</h2>
             </div>
-            <Link to="/shop" className="text-sm font-medium text-gold shrink-0">View all →</Link>
+            <CinematicButton to="/shop" variant="outline" size="sm">
+              View all →
+            </CinematicButton>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-8">
             {products.slice(0, 4).map((p, i) => (
@@ -141,9 +143,9 @@ export default function Home() {
           <p className="text-[11px] uppercase tracking-[0.2em] text-night/50 mb-5">Support</p>
           <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-4">{donateContent.title}</h2>
           <p className="text-night/60 text-sm leading-relaxed mb-10">{donateContent.subtitle}</p>
-          <Link to="/donate" className="inline-flex px-8 py-3 bg-night text-mist text-sm font-medium hover:bg-night/85 transition-colors">
+          <CinematicButton to="/donate" variant="secondary" size="lg">
             Donate now
-          </Link>
+          </CinematicButton>
         </div>
       </section>
     </>

@@ -26,7 +26,7 @@ export default function ProductCard({ product, index = 0, layout = 'horizontal' 
       >
         <TiltCard intensity={8}>
           <article className="group">
-            <div className="aspect-[4/5] overflow-hidden bg-linen/40 mb-4 shadow-[0_12px_40px_rgba(0,0,0,0.06)]">
+            <div className="aspect-[4/5] overflow-hidden bg-linen/40 mb-4 shadow-[0_12px_40px_rgba(0,0,0,0.08)]">
               <img
                 src={assetUrl(product.image)}
                 alt={product.name}
@@ -35,9 +35,9 @@ export default function ProductCard({ product, index = 0, layout = 'horizontal' 
             </div>
             <p className="text-[10px] uppercase tracking-[0.2em] text-stone mb-1.5 font-medium">{product.institute}</p>
             <h3 className="text-sm font-semibold text-charcoal mb-1 tracking-tight">{product.name}</h3>
-            <p className="text-sm font-medium text-forest mb-3">{formatPrice(product.price)}</p>
-            <CinematicButton variant="ghost" onClick={() => addItem(product)} className="!px-0 !py-0 !text-[13px]">
-              Add to cart →
+            <p className="text-sm font-semibold text-forest mb-4">{formatPrice(product.price)}</p>
+            <CinematicButton variant="primary" size="sm" onClick={() => addItem(product)} fullWidth>
+              Add to cart
             </CinematicButton>
           </article>
         </TiltCard>
@@ -56,7 +56,7 @@ export default function ProductCard({ product, index = 0, layout = 'horizontal' 
     >
       <div className="md:col-span-5">
         <TiltCard intensity={6}>
-          <div className="aspect-[4/5] bg-linen/30 overflow-hidden shadow-[0_16px_48px_rgba(0,0,0,0.08)]">
+          <div className="aspect-[4/5] bg-linen/30 overflow-hidden shadow-[0_16px_48px_rgba(0,0,0,0.1)]">
             <img
               src={assetUrl(product.image)}
               alt={product.name}
@@ -76,10 +76,10 @@ export default function ProductCard({ product, index = 0, layout = 'horizontal' 
         <p className="text-charcoal/55 text-sm leading-relaxed mb-6 max-w-md">
           {product.description}
         </p>
-        <div className="flex items-center gap-8">
-          <p className="text-xl font-semibold text-charcoal">{formatPrice(product.price)}</p>
-          <CinematicButton variant="ghost" onClick={() => addItem(product)} className="!text-[13px]">
-            Add to cart →
+        <div className="flex flex-wrap items-center gap-4">
+          <p className="text-xl font-bold text-charcoal">{formatPrice(product.price)}</p>
+          <CinematicButton variant="primary" size="md" onClick={() => addItem(product)}>
+            Add to cart
           </CinematicButton>
         </div>
       </div>

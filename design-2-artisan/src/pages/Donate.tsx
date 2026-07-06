@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { donateContent } from '@shared/content'
+import CinematicButton from '../components/ui/CinematicButton'
 
 export default function Donate() {
   return (
@@ -36,9 +37,9 @@ export default function Donate() {
         >
           <h2 className="text-2xl font-semibold tracking-tight mb-5">Make a Custom Donation</h2>
           <p className="text-cream/70 text-sm leading-[1.85] mb-8 max-w-md mx-auto">Every contribution helps us reach more children and create sustainable livelihoods.</p>
-          <button className="px-10 py-3.5 bg-terracotta text-white rounded-full font-medium hover:bg-terracotta/90 transition-colors">
+          <CinematicButton variant="accent" size="lg">
             Donate Now (POC)
-          </button>
+          </CinematicButton>
         </motion.div>
       </div>
     </div>

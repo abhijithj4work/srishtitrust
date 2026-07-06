@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { siteInfo } from '@shared/content'
+import CinematicButton from '../components/ui/CinematicButton'
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
@@ -64,9 +65,9 @@ export default function Contact() {
                 <label htmlFor="message" className="block text-sm font-medium mb-2">Message</label>
                 <textarea id="message" required rows={5} className="w-full px-4 py-3.5 rounded-xl border border-sand bg-cream focus:outline-none focus:border-terracotta resize-none" />
               </div>
-              <button type="submit" className="w-full py-3.5 bg-terracotta text-white rounded-full font-medium hover:bg-terracotta/90 transition-colors">
+              <CinematicButton type="submit" variant="accent" size="md" fullWidth>
                 Send Message
-              </button>
+              </CinematicButton>
             </form>
           )}
         </motion.div>

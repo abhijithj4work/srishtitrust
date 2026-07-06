@@ -56,8 +56,8 @@ export default function Navbar() {
             </AnimatePresence>
           </motion.button>
 
-          <CinematicButton to="/donate" variant="ghost" className="hidden sm:inline-flex !px-0 !py-0 !text-[13px] !border-0">
-            Donate →
+          <CinematicButton to="/donate" variant="primary" size="sm">
+            Donate
           </CinematicButton>
 
           <button
