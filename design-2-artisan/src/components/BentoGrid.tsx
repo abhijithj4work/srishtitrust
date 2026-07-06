@@ -1,0 +1,206 @@
+import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
+import {
+  whoWeAre, makingADifference, institutes, artisanSpotlight,
+  womenEmpowerment, sustainability, institutesIntro,
+} from '@shared/content'
+import { assetUrl } from '@shared/assetUrl'
+import { products } from '@shared/products'
+import { useCart } from '../context/CartContext'
+import ProductCard from './ProductCard'
+import CinematicButton from './ui/CinematicButton'
+
+function SectionHeader({ label, title, description }: { label: string; title: string; description?: string }) {
+  return (
+    <div className="mb-12 md:mb-16 max-w-2xl">
+      <p className="text-[11px] uppercase tracking-[0.2em] text-warm-gray mb-3">{label}</p>
+      <h2 className="text-2xl md:text-4xl font-semibold tracking-tight text-charcoal leading-tight">{title}</h2>
+      {description && <p className="text-warm-gray text-sm md:text-base mt-4 leading-relaxed">{description}</p>}
+    </div>
+  )
+}
+
+export default function BentoGrid() {
+  const { addItem } = useCart()
+
+  return (
+    <div className="bg-cream">
+      {/* Who We Are */}
+      <section className="py-24 md:py-32 border-t border-charcoal/6">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <SectionHeader label="About" title={whoWeAre.title} />
+              <p className="text-charcoal/65 text-base leading-[1.8] mb-8">{whoWeAre.content}</p>
+              <Link to="/journey" className="inline-flex items-center gap-2 text-sm font-medium text-charcoal border-b border-charcoal/20 pb-1 hover:border-charcoal transition-colors">
+                {whoWeAre.cta} →
+              </Link>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.98 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="aspect-[4/5] overflow-hidden"
+            >
+              <img src={assetUrl('assets/making-a-difference.jpg')} alt="Making a difference" className="w-full h-full object-cover" />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Making a Difference */}
+      <section className="py-24 md:py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <SectionHeader label={makingADifference.subtitle} title={makingADifference.title} />
+          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+            {makingADifference.pillars.map((pillar, i) => (
+              <motion.div
+                key={pillar.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="p-8 md:p-10 border border-charcoal/6 bg-cream/50"
+              >
+                <span className="text-[11px] font-medium text-terracotta tracking-widest">0{i + 1}</span>
+                <h3 className="text-lg font-semibold tracking-tight mt-4 mb-3">{pillar.title}</h3>
+                <p className="text-warm-gray text-sm leading-[1.75]">{pillar.description}</p>
+              </motion.div>
+            ))}
+          </div>
+          <blockquote className="mt-16 md:mt-20 pt-12 border-t border-charcoal/8 max-w-3xl mx-auto text-center">
+            <p className="text-lg md:text-xl text-charcoal/80 leading-relaxed font-light italic">
+              &ldquo;{makingADifference.quote.text}&rdquo;
+            </p>
+            <cite className="text-[11px] uppercase tracking-[0.15em] text-warm-gray mt-6 block not-italic">
+              — {makingADifference.quote.author}
+            </cite>
+          </blockquote>
+        </div>
+      </section>
+
+      {/* Institutes */}
+      <section className="py-24 md:py-32">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16">
+            <SectionHeader label="Welfare" title={institutesIntro.title} description={institutesIntro.highlight} />
+            <Link to="/institutes" className="text-sm font-medium text-charcoal shrink-0 border-b border-charcoal/20 pb-1 hover:border-charcoal">
+              View all →
+            </Link>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+            {institutes.map((inst, i) => (
+              <motion.div
+                key={inst.slug}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                className="group"
+              >
+                <Link to={`/institutes/${inst.slug}`} className="block">
+                  <div className="aspect-[3/4] overflow-hidden mb-4">
+                    <img src={assetUrl(inst.image)} alt={inst.name} className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700" />
+                  </div>
+                  <h3 className="text-sm font-semibold tracking-tight group-hover:text-terracotta transition-colors">{inst.name}</h3>
+                  <p className="text-warm-gray text-xs mt-1.5 leading-relaxed line-clamp-2">{inst.tagline}</p>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Artisan Spotlight */}
+      <section className="py-24 md:py-32 bg-charcoal text-cream">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-5"
+            >
+              <img src={assetUrl('assets/artisan-james.jpg')} alt={artisanSpotlight.name} className="w-full aspect-[4/5] object-cover" />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-7 lg:pl-8"
+            >
+              <p className="text-[11px] uppercase tracking-[0.2em] text-cream/40 mb-6">{artisanSpotlight.title}</p>
+              <blockquote className="text-xl md:text-2xl leading-[1.6] font-light mb-8">
+                &ldquo;{artisanSpotlight.quote}&rdquo;
+              </blockquote>
+              <p className="text-sm font-medium">{artisanSpotlight.name}</p>
+              <p className="text-cream/50 text-sm mt-2 leading-relaxed">{artisanSpotlight.bio}</p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Women + Sustainability */}
+      <section className="py-24 md:py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-12 lg:gap-16">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="p-10 md:p-12 border border-charcoal/6">
+            <p className="text-[11px] uppercase tracking-[0.2em] text-warm-gray mb-4">{womenEmpowerment.title}</p>
+            <p className="text-charcoal/70 text-sm leading-[1.8] mb-4">{womenEmpowerment.content}</p>
+            <p className="text-charcoal/55 text-sm leading-[1.8] italic">{womenEmpowerment.story}</p>
+          </motion.div>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="p-10 md:p-12 bg-olive text-cream">
+            <p className="text-[11px] uppercase tracking-[0.2em] text-cream/50 mb-4">Sustainability</p>
+            <p className="text-sm leading-[1.8] text-cream/80 mb-6">{sustainability.intro}</p>
+            <p className="text-xs leading-[1.8] text-cream/60">{sustainability.award}</p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Shop preview */}
+      <section className="py-24 md:py-32">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16">
+            <SectionHeader label="Store" title="Shop handmade" description="Your purchases power education and livelihoods." />
+            <Link to="/shop" className="text-sm font-medium shrink-0 border-b border-charcoal/20 pb-1 hover:border-charcoal">View all products →</Link>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-8">
+            {products.slice(0, 4).map((p, i) => (
+              <ProductCard key={p.id} product={p} index={i} />
+            ))}
+          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-16 md:mt-20 p-10 md:p-14 bg-charcoal text-cream flex flex-col md:flex-row md:items-center md:justify-between gap-8 cursor-pointer"
+            onClick={() => addItem(products[4])}
+          >
+            <div>
+              <p className="text-[11px] uppercase tracking-[0.2em] text-cream/40 mb-2">Featured</p>
+              <h3 className="text-xl font-semibold tracking-tight">{products[4].name}</h3>
+              <p className="text-cream/60 text-sm mt-2">{products[4].institute}</p>
+            </div>
+            <p className="text-2xl font-semibold">Rs. 2,500</p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Donate CTA */}
+      <section className="py-20 md:py-24 bg-sand/30 border-t border-charcoal/6">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <p className="text-[11px] uppercase tracking-[0.2em] text-warm-gray mb-4">Support us</p>
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-4">Help us reach more lives</h2>
+          <p className="text-warm-gray text-sm mb-8 leading-relaxed">Your donations expand our programs and create more sustainable livelihoods in Munnar.</p>
+          <CinematicButton to="/donate" variant="primary">
+            Make a donation
+          </CinematicButton>
+        </div>
+      </section>
+    </div>
+  )
+}
